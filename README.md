@@ -1,68 +1,59 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Good Food LA
 
-## Available Scripts
+The Los Angeles Food Policy Council (LAFPC) works to ensure food is healthy, affordable, fair and sustainable for all.
+This website is a dashboard for everyone in the Los Angeles community to see how the Los Angeles Food Policy Council's initatives improve the health and life of their communities.
 
-In the project directory, you can run:
+## Technologies
+### Front-End (User Interface)
+* HTML5
+* CSS3
+* Material-UI (React.js UI Framework)
+* JavaScript
+* React.js
+* Styled Components (React)
 
-### `npm start`
+### Back-End (Server-Side and Database)
+* MongoDB (NoSQL Database)
+* Express.js
+* Node.js
+* Mongoose (Models)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Goals
+* Implement scalable data inputs
+* Convey data about food policy in an easy to understand matter
+* Debug layouts (HTML) and styling (CSS).
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### User Stories
+* On the homepage, the user is able to read the values of Good Food LA:
+Sustainability, Health, Affordability, and Fairness.
+* The user can see a Navigation Bar at the top that contains the logo, a home button, and an admin button.
+* The user is able to see four tabs for each of the values (Sustainability, Health, Affordability, Fairness). Upon clicking, the tab is shaded, and the content in the center of the page changes with detailed descriptions of each value.
+* The user should be able to see the data in a clean and simplified graph.
+* Table columns are divided by indicator, year, and trend.
+* Data tables near the bottom of the page rely on collapsible menus. They hide specific neighborhoods when closed.
+* Main categories of info are collapsable by clicking the minus "-". When opened, they show specific regions associated with the main category.
+* Emotions and shading portray changes in trends in the data from year to year. Positive emotions (smiley face) represent an increase, "so-so" emotions represent no change, and negative emotions represent a decrease.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### MVC Data
+* Admin Model
+```
+const adminSchema = new mongoose.Schema({
+  username: String,
+  password: String
+})
+```
+* Data Model
+```
+const dataSchema = new mongoose.Schema({
+  indicator: String,
+  baseline:  String,
+  update:   [ String ],
+  sources: String,
+  change: String,
+  notes: String,
+  dataStatus: String,
+  group: String,
+  value: String,
+})
+```
