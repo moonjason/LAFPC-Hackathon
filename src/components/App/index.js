@@ -26,19 +26,19 @@ class App extends Component {
 
   state = {
     user: null,
-    laoding: true,
+    loading: true,
     isLogged: false,
     data: [],
     affordable: [],
   }
 
   componentDidMount() {
-    // const user = JSON.parse(localStorage.getItem('admin'))
-    // if(user) {
-    //   this.setState({
-    //     user: user
-    //   })
-    // }
+    const user = JSON.parse(localStorage.getItem('admin'))
+    if(user) {
+      this.setState({
+        isLogged: true
+      })
+    }
   }
 
   register = async (data) => {
@@ -59,7 +59,7 @@ class App extends Component {
       console.log(localStorage, 'this is local storage')
       this.setState({
         user: parsedResponse.data,
-        laoding: false,
+        loading: false,
         isLogged: true
       })
 
