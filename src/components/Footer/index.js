@@ -12,9 +12,9 @@ class Footer extends Component{
             <MainDiv>
                 <LeftDiv>
                     <h3>STAY CONNECTED</h3>
-                    <FacebookIcon style={{margin:'10px'}}/>
-                    <InstagramIcon style={{margin:'10px'}}/>
-                    <TwitterIcon style={{margin:'10px'}}/>
+                    <a href="https://www.facebook.com/LosAngelesFoodPolicyCouncil"><FacebookIcon href="https://www.facebook.com/LosAngelesFoodPolicyCouncil" style={{margin:'10px'}}/></a> 
+                    <a href="https://www.instagram.com/lagoodfood/"><InstagramIcon style={{margin:'10px'}}/></a>
+                    <a href="https://twitter.com/GoodFoodLA"><TwitterIcon style={{margin:'10px'}}/></a>
                 </LeftDiv>
                 <RightDiv>
                     <h3>GET INVOLVED</h3>
