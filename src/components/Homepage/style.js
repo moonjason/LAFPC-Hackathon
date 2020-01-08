@@ -13,20 +13,22 @@ export const TileDiv = styled.div`
     display: flex;
     justify-content: center;
     padding: 3%;
-    border-bottom: 2px solid #D1D1D1;
     margin: 0 10% 0 10%;
 `
 
 export const HeaderDiv = styled.div`
     margin: 0 30% 0 30%;
 `
+export const Title = styled.h1`
+    margin-top: 3rem;
+`
 
 export const DescripDiv = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    grid-column-gap: 25px;
     justify-content: center;
-    margin: 0 10% 0 10%;
-    border-bottom: 2px solid #D1D1D1;
-
+    margin: 2rem 0;
 `
 
 export const Descrip = styled.div`
@@ -35,7 +37,7 @@ export const Descrip = styled.div`
 `
 
 export const Text = styled.p`
-    text-align: left
+    text-align: left;
 `
 
 export const UserImgDiv = styled.div`
@@ -54,4 +56,8 @@ export const UserImg = styled.img`
     &:hover {
        opacity: .8;
     }
+`
+export const Break = styled.hr`
+    width: 80%;
+    border: 1.25px solid lightgray;
 `

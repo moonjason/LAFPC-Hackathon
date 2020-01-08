@@ -14,17 +14,18 @@ import Container from '@material-ui/core/Container';
 import Footer from '../Footer'
 import TestComponent from '../TestComponent';
 
+import S from "./style"
+
 const My404 = () => {
   return (
     <div>
-      <Redirect to='/home' />
+      <Redirect to='/' />
     </div>
   )
 }
 
 
 class App extends Component {
-
   state = {
     user: null,
     loading: true,
@@ -116,14 +117,11 @@ class App extends Component {
       console.log(err)
     }
   }
-s
-
-
     render() {
       const { login } = this.login
       console.log(this.props)
         return (
-          <div>
+          <S.Container>
             <AdminButton isLogged={this.state.isLogged} logout={this.logout}/>
             <Navbar logout={this.logout}/>
             <Switch>
@@ -146,7 +144,7 @@ s
               <Route component={ My404 } />
             </Switch>
             <Footer/>
-          </div>
+          </S.Container>
         )
     }
 }
