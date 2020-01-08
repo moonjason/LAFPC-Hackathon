@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { Redirect, Switch } from 'react-router-dom'
 
 import {HomeDiv, 
-        Tiles, 
         TileDiv,
+        Card,
+        Icon,
         Title,
         HeaderDiv,
         DescripDiv,
@@ -12,14 +13,17 @@ import {HomeDiv,
         UserImgDiv,
         Break,
         Text,
+        PillarTitle,
+        PillarDescrip,
         CaseStudiesDiv,
         CaseStudiesHead
         } from './style'
 
-import afford from "./img/Afford.png"
-import fair from "./img/Fair.png"
-import health from "./img/Health.png"
-import sus from "./img/Sus.png"
+
+import Affordablility from "./img/Affordability.png"
+import Sustainability from "./img/Sustainability.png"
+import Fairness from "./img/Fairness2.png"
+import Health from "./img/Health.png"
 
 import Food from "./img/food-la.jpeg"
 import Compost from "./img/compost-ground.jpg"
@@ -50,10 +54,26 @@ class Home extends Component {
                         <p>LAFPC takes great pride at the positive changes we affect in our communities. See below for our in-depth statistics and data on how much our programs improve the loves of those around us.</p>
                     </HeaderDiv>
                     <TileDiv>
-                        <a href='/sustainable'><Tiles src={sus} alt={"logo"} /></a>
-                        <a href='/healthy'><Tiles src={health} alt={"logo"} /></a>
-                        <a href='/affordable'><Tiles src={afford} alt={"logo"} /></a>
-                        <a href='/fair'><Tiles src={fair} alt={"logo"} /></a>
+                        <Card to="/sustainability" color="#78B350">
+                            <Icon src={Sustainability}></Icon>
+                            <PillarTitle>Sustainability</PillarTitle>
+                            <PillarDescrip>See how we ensure and expand the impact for sustainable food practices.</PillarDescrip>
+                        </Card>
+                        <Card to="/health" color="#266574">
+                            <Icon src={Health}></Icon>
+                            <PillarTitle>Health</PillarTitle>
+                            <PillarDescrip>See how our efforts are improving people’s health in the community.</PillarDescrip>
+                        </Card>
+                        <Card to="/affordability" color="#B94851">
+                            <Icon src={Affordablility}></Icon>
+                            <PillarTitle>Affordability</PillarTitle>
+                            <PillarDescrip>See our success in providing affordable, fresh food to locals.</PillarDescrip>
+                        </Card>
+                        <Card to="/fairness" color="#FF8263">
+                            <Icon src={Fairness}></Icon>
+                            <PillarTitle>Fairness</PillarTitle>
+                            <PillarDescrip>See how we curate fair prices for the food we help to distribute.</PillarDescrip>
+                        </Card>
                     </TileDiv>
                     <Break></Break>
                     <DescripDiv>

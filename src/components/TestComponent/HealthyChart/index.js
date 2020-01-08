@@ -1,11 +1,13 @@
 import React, { Component } from "react"
 import ReactApexChart from "react-apexcharts"
+import { dark } from "@material-ui/core/styles/createPalette"
 
 class HealthyChart extends Component {
     state = {
         series: [{
             name: 'Poverty',
-            data: [44, 54, 23]
+            data: [44, 54, 23],
+            color: "red"
         }, {
             name: 'Obesity',
             data: [76, 85, 101]
@@ -43,6 +45,7 @@ class HealthyChart extends Component {
             fill: {
                 opacity: 1
             },
+            colors:['#DB5461', '#218380', '#4DFFF3'],
             tooltip: {
                 y: {
                     formatter: function (val) {

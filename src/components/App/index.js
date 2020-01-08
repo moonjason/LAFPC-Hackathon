@@ -136,10 +136,10 @@ class App extends Component {
               }
               <Route exact path='/addadmin' render={(props) =>  <AddAdmin register={this.register}  {...props} />} />
               <Route exact path='/' render={(props) =>  <Homepage {...props} />}  />
-              <Route exact path='/affordable' render={() => <Affordable  isLogged={this.state.isLogged}/>}/>
-              <Route exact path='/healthy' render={() => <Healthy isLogged={this.state.isLogged}/>}/>
-              <Route exact path='/fair' render={() => <Fair isLogged={this.state.isLogged}/>}/>
-              <Route exact path='/sustainable' render={() => <Sustainable isLogged={this.state.isLogged}/>}/>
+              <Route exact path='/affordability' render={() => <Affordable  isLogged={this.state.isLogged}/>}/>
+              <Route exact path='/health' render={() => <Healthy isLogged={this.state.isLogged}/>}/>
+              <Route exact path='/fairness' render={() => <Fair isLogged={this.state.isLogged}/>}/>
+              <Route exact path='/sustainability' render={() => <Sustainable isLogged={this.state.isLogged}/>}/>
 
               <Route exact path='/test' render={() => <TestComponent isLogged={this.state.isLogged} />} />
               <Route exact path='/test' render={() => <TestComponent2 isLogged={this.state.isLogged} />} />
