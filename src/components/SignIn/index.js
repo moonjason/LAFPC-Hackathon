@@ -14,18 +14,25 @@ class SignIn extends Component {
   onInputChange = (e) => { this.setState({ [e.target.name]: e.target.value }) 
   };
 
-  validate = () => {
-    if(
-      (this.state.password.length < 1) || 
-      (this.state.username.length < 1)
-      ) {
-      this.setState({
-        error: {
-          password: 'passwords must match,length of 5 with a upper/lower case letter!!!' 
-        }
-      })
+  validate = async () => {
+    const loginResponse = await fetch (`http://localhost:3030/admin/login-admin`, {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify(this.state),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const parsedResponse = await loginResponse.json();
+    console.log(parsedResponse.msg, 'hello')
+    if(parsedResponse.msg) {
+        console.log('false')
+        this.setState({
+          error: parsedResponse.msg
+        })
         return false
-      } else {
+    } else if (!parsedResponse.msg) {
+        console.log('true')
         return true
     }
   };
@@ -33,11 +40,10 @@ class SignIn extends Component {
   submit = async (e) => {
     console.log('hitting')
     e.preventDefault();
-    const isValid = this.validate();
-    if(isValid) {
+    const isValid = await this.validate();
+    if(isValid === true) {
         const login = this.props.login(this.state)
         login.then(() => {this.props.history.push('/admin-home')})
-        console.log(this.props)
     }
   }
 
@@ -73,6 +79,7 @@ class SignIn extends Component {
                     <small></small>
                   </div>
                 </div>
+                <div>{this.state.error}</div>
                 <Button
                   type="submit" 
                   color="inherit"

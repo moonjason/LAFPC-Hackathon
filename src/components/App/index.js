@@ -88,7 +88,7 @@ class App extends Component {
         return {
           isLogged: true,
           user: parsedResponse.foundUser,
-          loading: false
+          loading: false,
         }
       })
 
@@ -96,7 +96,6 @@ class App extends Component {
 
 
     } catch (err){
-      alert('sorry, wrong info')
       console.log(err)
     }
   }
@@ -141,7 +140,7 @@ s
               <Route exact path='/healthy' render={() => <Healthy isLogged={this.state.isLogged}/>}/>
               <Route exact path='/fair' render={() => <Fair isLogged={this.state.isLogged}/>}/>
               <Route exact path='/sustainable' render={() => <Sustainable isLogged={this.state.isLogged}/>}/>
-              <Route exact path='/admin' render={() => <SignIn login={this.login}/>} />
+              <Route exact path='/admin' render={() => <SignIn login={this.login} msg={this.state.msg}/>} />
               <Route component={ My404 } />
             </Switch>
             <Footer/>

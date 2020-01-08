@@ -43,13 +43,17 @@ router.post('/login-admin', async (req,res)=>{
                     foundAdmin
                 })
             }else{
-                req.session.message = "Sorry, information provided does not match";
+                res.json({
+                    msg: "Sorry, information provided does not match"
+                }) 
             }
         }else{
-            req.session.message = "Sorry, information provided does not match";
+            res.json({
+                msg: "Sorry, information provided does not match"
+            }) 
         }
     }catch(err){
-        res.send(err);
+        console.log(err);
     }
 })
 
