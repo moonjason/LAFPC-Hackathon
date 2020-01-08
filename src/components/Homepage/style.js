@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { NavLink } from "react-router-dom"
 
+
 export const HomeDiv = styled.div`
     text-align: center;
 `
@@ -84,6 +85,28 @@ export const UserImg = styled.img`
        opacity: .8;
     }
 `
+
+export const CaseStudiesDiv = styled.div`
+    color: white;
+    font-size: 22px;
+    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0 10px;
+    padding: 30px;
+    height: 40vh;
+    width: 50vh;
+    border-radius: 3%;
+    &:hover {
+       opacity: .8;
+    }
+    background-size: cover;
+    background-repeat: no-repeat;
+`
+
+export const CaseStudiesHead = styled.h4`
+    font-size: 32px;
+    
+`
+
 export const Break = styled.hr`
     width: 80%;
     border: 1.25px solid lightgray;

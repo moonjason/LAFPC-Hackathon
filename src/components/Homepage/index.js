@@ -14,20 +14,39 @@ import {HomeDiv,
         Break,
         Text,
         PillarTitle,
-        PillarDescrip} from './style'
+        PillarDescrip,
+        CaseStudiesDiv,
+        CaseStudiesHead
+        } from './style'
+
 
 import Affordablility from "./img/Affordability.png"
 import Sustainability from "./img/Sustainability.png"
 import Fairness from "./img/Fairness2.png"
 import Health from "./img/Health.png"
 
-import Food from "./img/Food.png"
-import Compost from "./img/Compost.png"
-import Plant from "./img/Plant.png"
-
+import Food from "./img/food-la.jpeg"
+import Compost from "./img/compost-ground.jpg"
+import Plant from "./img/green-plant.jpg"
 
 class Home extends Component {
     render() {
+
+        const foodStyle = {
+            backgroundImage: `url("${Food}")`,
+            border: '0px solid black'
+        }
+
+        const compostStyle = {
+            backgroundImage: `url("${Compost}")`,
+            border: '0px solid black'
+        }
+
+        const plantStyle = {
+            backgroundImage: `url("${Plant}")`,
+            border: '0px solid black'
+        }
+
         return (
                 <HomeDiv>
                     <HeaderDiv>
@@ -75,9 +94,21 @@ class Home extends Component {
                     <Break></Break>
                         <Title>Case Studies</Title>
                     <UserImgDiv>
-                        <UserImg src={Food}/>
-                        <UserImg src={Compost}/>
-                        <UserImg src={Plant}/>
+                        {/* <UserImg src={Food}/>
+                        <UserImg src={Compost}/> */}
+                        {/* <UserImg src={Plant}/> */}
+                        <CaseStudiesDiv style={foodStyle}>
+                        <CaseStudiesHead>Food Security</CaseStudiesHead>
+                            <p>Food security between different age and race remains a challenge.</p>
+                        </CaseStudiesDiv>
+                        <CaseStudiesDiv style={compostStyle}>
+                            <CaseStudiesHead>LA Compost</CaseStudiesHead>
+                            <p>LA Compost approaches sustianability in a holistic way</p>
+                        </CaseStudiesDiv>
+                        <CaseStudiesDiv style={plantStyle}>
+                            <CaseStudiesHead>Veggies Rx Program</CaseStudiesHead>
+                            <p>Improving healthy food consumption through holistic healthcare approaches</p>
+                        </CaseStudiesDiv>
                     </UserImgDiv>
                 </HomeDiv>
         )
