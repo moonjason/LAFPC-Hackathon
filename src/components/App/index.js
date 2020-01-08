@@ -13,7 +13,6 @@ import AdminButton from '../AdminButton';
 import Container from '@material-ui/core/Container';
 import Footer from '../Footer'
 import TestComponent from '../TestComponent';
-import TestComponent2 from '../TestComponent';
 
 
 import S from "./style"
@@ -142,7 +141,6 @@ class App extends Component {
               <Route exact path='/sustainability' render={() => <Sustainable isLogged={this.state.isLogged}/>}/>
 
               <Route exact path='/test' render={() => <TestComponent isLogged={this.state.isLogged} />} />
-              <Route exact path='/test' render={() => <TestComponent2 isLogged={this.state.isLogged} />} />
               <Route exact path='/admin' render={() => <SignIn login={this.login} msg={this.state.msg}/>} />
               <Route component={ My404 } />
             </Switch>
