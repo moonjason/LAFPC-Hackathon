@@ -3,8 +3,8 @@ import { Route, Switch } from 'react-router-dom'
 import { Link as LinkRoute } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import logo from "./img/FPC-Logo.png"
-import Banner from "./img/apples-banner.png"
+import logo from "./img/whitelogo.png"
+import Banner from "./img/veggies-banner.png"
 import HomeIcon from '@material-ui/icons/Home';
 
 
@@ -36,6 +36,13 @@ class AdminButton extends Component {
                   style={{margin:'0', color:'white', fontWeight:'bold'}}
                 >
                   <HomeIcon />
+                </Button>
+                <Button
+                  variant="contained" 
+                  color="primary"
+                  style={{fontWeight: 'bold', color: '#FFFB00'}}
+                >
+                  Donate
                 </Button>
                 {
                   this.props.isLogged

@@ -56,7 +56,6 @@ export const DescripDiv = styled.div`
     grid-column-gap: 50px;
     justify-content: center;
     margin: 2rem 0;
-}
 `
 
 export const Descrip = styled.div`

@@ -28,7 +28,29 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 
+// Material UI Themes
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import './TestComponent.css'
+
+// Styled Components
 import S from './style'
+
+
+const theme = createMuiTheme({
+    typography: {
+        fontFamily: [
+            'Arbutus Slab',
+            'Nunito',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif'
+        ].join(','),
+    }
+});
+
+
 
 class TestComponent extends Component {
 
@@ -210,6 +232,7 @@ class TestComponent extends Component {
                 }
                 <S.Container2>
                     <S.DropDown>
+                        <ThemeProvider theme={theme}>
                         <ExpansionPanel>
                             <ExpansionPanelSummary
                                 expandIcon={<ExpandMoreIcon />}
@@ -415,7 +438,8 @@ class TestComponent extends Component {
                                     <option value={30}>Thirty</option>
                                 </NativeSelect> */}
                             </ExpansionPanelDetails>
-                        </ExpansionPanel>   
+                        </ExpansionPanel> 
+                        </ThemeProvider>  
                     </S.DropDown>
                     <div id="chart">
                         <HealthyChart 
