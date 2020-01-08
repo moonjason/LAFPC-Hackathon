@@ -7,6 +7,28 @@ import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import SendIcon from '@material-ui/icons/Send';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Checkbox from '@material-ui/core/Checkbox';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+
+
 
 import {
     Container,
@@ -206,7 +228,7 @@ class TestComponent extends Component {
                         :
                         null
                 }
-                <Table>
+                {/* <Table>
                     <Row>
                         {
                             this.props.isLogged
@@ -266,7 +288,7 @@ class TestComponent extends Component {
                             )
                         })
                     }
-                </Table>
+                </Table> */}
                 {
                     this.props.isLogged
                         ?
@@ -274,7 +296,7 @@ class TestComponent extends Component {
                         :
                         null
                 }
-                <ChartDiv>
+                {/* <ChartDiv>
                     <ToolKit>
                         <Button style={{ backgroundColor: '#AAE0F4', marginTop: "10px" }} fullWidth>Number of Properties</Button>
                         <Button style={{ backgroundColor: '#AAE0F4', marginTop: "10px" }} fullWidth>Grocery Stores</Button>
@@ -285,7 +307,219 @@ class TestComponent extends Component {
                     <ToolKit>
                         <Donut healthyData={this.state.healthyData} />
                     </ToolKit>
-                </ChartDiv>
+                </ChartDiv> */}
+
+                <ExpansionPanel>
+                    <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography >Store</Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <RadioGroup aria-label="gender" name="gender2">
+                        {/* <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Radio color="primary" />}
+                            label="None"
+                        />
+                        <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Radio color="primary" />}
+                            label="None"
+                        /> */}
+                        
+                         <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Checkbox />}
+                            label="Convenience"
+                        />
+                        <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Checkbox />}
+                            label="Grocery"
+                        />
+                        <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Checkbox />}
+                            label="Liquor"
+                        />
+                        {/* <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Checkbox />}
+                            label="None"
+                        /> */}
+                        
+
+                        </RadioGroup>
+                        
+                        {/* <NativeSelect>
+                            
+                            <option value="">None</option>
+                            <option value={10}>Ten</option>
+                            <option value={20}>Twenty</option>
+                            <option value={30}>Thirty</option>
+                        </NativeSelect> */}
+                    </ExpansionPanelDetails>
+                    
+
+                    
+                </ExpansionPanel>
+
+                <ExpansionPanel>
+                    <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography >Source</Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <RadioGroup aria-label="gender" name="gender2">
+                            {/* <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Radio color="primary" />}
+                            label="None"
+                        />
+                        <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Radio color="primary" />}
+                            label="None"
+                        /> */}
+
+                            <FormControlLabel
+                                aria-label="Acknowledge"
+                                onClick={event => event.stopPropagation()}
+                                onFocus={event => event.stopPropagation()}
+                                control={<Checkbox />}
+                                label="Convenience"
+                            />
+                            <FormControlLabel
+                                aria-label="Acknowledge"
+                                onClick={event => event.stopPropagation()}
+                                onFocus={event => event.stopPropagation()}
+                                control={<Checkbox />}
+                                label="Grocery"
+                            />
+                            <FormControlLabel
+                                aria-label="Acknowledge"
+                                onClick={event => event.stopPropagation()}
+                                onFocus={event => event.stopPropagation()}
+                                control={<Checkbox />}
+                                label="Liquor"
+                            />
+                            {/* <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Checkbox />}
+                            label="None"
+                        /> */}
+
+
+                        </RadioGroup>
+
+                        {/* <NativeSelect>
+                            
+                            <option value="">None</option>
+                            <option value={10}>Ten</option>
+                            <option value={20}>Twenty</option>
+                            <option value={30}>Thirty</option>
+                        </NativeSelect> */}
+                    </ExpansionPanelDetails>
+
+
+
+                </ExpansionPanel>        
+
+                <ExpansionPanel>
+                    <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography >Payment</Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <RadioGroup aria-label="gender" name="gender2">
+                            {/* <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Radio color="primary" />}
+                            label="None"
+                        />
+                        <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Radio color="primary" />}
+                            label="None"
+                        /> */}
+
+                            <FormControlLabel
+                                aria-label="Acknowledge"
+                                onClick={event => event.stopPropagation()}
+                                onFocus={event => event.stopPropagation()}
+                                control={<Checkbox />}
+                                label="Convenience"
+                            />
+                            <FormControlLabel
+                                aria-label="Acknowledge"
+                                onClick={event => event.stopPropagation()}
+                                onFocus={event => event.stopPropagation()}
+                                control={<Checkbox />}
+                                label="Grocery"
+                            />
+                            <FormControlLabel
+                                aria-label="Acknowledge"
+                                onClick={event => event.stopPropagation()}
+                                onFocus={event => event.stopPropagation()}
+                                control={<Checkbox />}
+                                label="Liquor"
+                            />
+                            {/* <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={event => event.stopPropagation()}
+                            onFocus={event => event.stopPropagation()}
+                            control={<Checkbox />}
+                            label="None"
+                        /> */}
+
+
+                        </RadioGroup>
+
+                        {/* <NativeSelect>
+                            
+                            <option value="">None</option>
+                            <option value={10}>Ten</option>
+                            <option value={20}>Twenty</option>
+                            <option value={30}>Thirty</option>
+                        </NativeSelect> */}
+                    </ExpansionPanelDetails>
+
+
+
+                </ExpansionPanel>   
+               
+                
             </Container>
         )
     }
