@@ -1,13 +1,18 @@
 import styled from 'styled-components'
 
-export const MainDiv = styled.div`
+export const MainContainer = styled.div`
+    width: 100%;
+    margin-top: auto;
+`
+
+export const Container1 = styled.div`
     background-color: #2e6472;
     color: #fff;
     display: flex;
     justify-content: center;
     padding: 10px 20px 10px 20px;
 `
-export const SecondDiv = styled.div`
+export const Container2 = styled.div`
     background-color: #2e6472;
     color: #fff;
     display: flex;
