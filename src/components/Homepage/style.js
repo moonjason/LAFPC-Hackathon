@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 
 export const HomeDiv = styled.div`
-    text-align:center;
+    text-align: center;
 `
 export const Tiles = styled.img`
     height: 50vh;
