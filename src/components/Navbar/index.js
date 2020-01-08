@@ -19,8 +19,8 @@ class Navbar extends Component {
                             to='/sustainability'
                             style={
                                 pageUrl === 'sustainability' 
-                                ? {backgroundColor:'#8BC147', color:'white', fontWeight:'bold', borderColor:'#8BC147', borderBottom: '4px solid black'}
-                                : {backgroundColor:'#8BC147', color:'white', fontWeight:'bold', borderColor:'#8BC147'}
+                                ? {backgroundColor:'#78B350', color:'#3A3B45', fontWeight:'bold', borderColor:'#78B350'}
+                                : {backgroundColor:'#78B350', color:'white', fontWeight:'bold', borderColor:'#78B350'}
                             }
                         >
                             Sustainability
@@ -32,8 +32,8 @@ class Navbar extends Component {
                             to='/health' 
                             style={
                                 pageUrl === 'health' 
-                                ? {backgroundColor:'#AAE0F4', color:'white', fontWeight:'bold', borderColor:'#AAE0F4', borderBottom: '4px solid black'}
-                                : {backgroundColor:'#AAE0F4', color:'white', fontWeight:'bold', borderColor:'#AAE0F4'}
+                                ? {backgroundColor:'#266574', color:'#3A3B45', fontWeight:'bold', borderColor:'#266574'}
+                                : {backgroundColor:'#266574', color:'white', fontWeight:'bold', borderColor:'#266574'}
                             }
                         >
                             Health
@@ -46,8 +46,8 @@ class Navbar extends Component {
                             to='/affordability' 
                             style={
                                 pageUrl === 'affordability' 
-                                ? {backgroundColor:'#F4934D', color:'white', fontWeight:'bold', borderColor:'#F4934D', borderBottom: '4px solid black'}
-                                : {backgroundColor:'#F4934D', color:'white', fontWeight:'bold', borderColor:'#F4934D'}
+                                ? {backgroundColor:'#B94A51', color:'#3A3B45', fontWeight:'bold', borderColor:'#B94A51'}
+                                : {backgroundColor:'#B94A51', color:'white', fontWeight:'bold', borderColor:'#B94A51'}
                             }
                         >
                             Affordability
@@ -59,8 +59,8 @@ class Navbar extends Component {
                             to='/fairness' 
                             style={
                                 pageUrl === 'fairness' 
-                                ? {backgroundColor:'#D6D7AD', color:'white', fontWeight:'bold', borderColor:'#D6D7AD', borderBottom: '4px solid black'}
-                                : {backgroundColor:'#D6D7AD', color:'white', fontWeight:'bold', borderColor:'#D6D7AD'}
+                                ? {backgroundColor:'#FF8263', color:'#3A3B45', fontWeight:'bold', borderColor:'#FF8263'}
+                                : {backgroundColor:'#FF8263', color:'white', fontWeight:'bold', borderColor:'#FF8263'}
                             }
                         >
                             Fairness
