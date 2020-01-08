@@ -37,6 +37,13 @@ class AdminButton extends Component {
                 >
                   <HomeIcon />
                 </Button>
+                <Button
+                  variant="contained" 
+                  color="primary"
+                  style={{fontWeight: 'bold', color: '#FFFB00'}}
+                >
+                  Donate
+                </Button>
                 {
                   this.props.isLogged
                     ? 
