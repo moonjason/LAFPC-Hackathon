@@ -12,6 +12,7 @@ import SignIn from '../SignIn'
 import AdminButton from '../AdminButton';
 import Container from '@material-ui/core/Container';
 import Footer from '../Footer'
+import TestComponent from '../TestComponent';
 
 const My404 = () => {
   return (
@@ -139,6 +140,8 @@ s
               <Route exact path='/healthy' render={() => <Healthy isLogged={this.state.isLogged}/>}/>
               <Route exact path='/fair' render={() => <Fair isLogged={this.state.isLogged}/>}/>
               <Route exact path='/sustainable' render={() => <Sustainable isLogged={this.state.isLogged}/>}/>
+              
+              <Route exact path='/test' render={() => <TestComponent isLogged={this.state.isLogged} />} />
               <Route exact path='/admin' render={() => <SignIn login={this.login} msg={this.state.msg}/>} />
               <Route component={ My404 } />
             </Switch>
