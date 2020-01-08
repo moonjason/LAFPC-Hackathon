@@ -9,7 +9,6 @@ import HomeIcon from '@material-ui/icons/Home';
 
 
 class AdminButton extends Component {
-
   render() {
       return (
         <div style={{backgroundImage:`url(${Banner})`, backgroundPosition:'center', backgroundSize:'cover'}}>
@@ -38,14 +37,28 @@ class AdminButton extends Component {
                 >
                   <HomeIcon />
                 </Button>
-                <Button 
+                {
+                  this.props.isLogged
+                    ? 
+                      <Button 
+                      component={ LinkRoute } 
+                      to='/' 
+                      color="inherit"
+                      style={{margin:'20px', color:'white', fontWeight:'bold'}}
+                      onClick={() => this.props.logout()}
+                      >
+                        Logout
+                      </Button>
+                    : null
+                }
+                {/* <Button 
                 component={ LinkRoute } 
                 to='/SignIn' 
                 color="inherit"
                 style={{margin:'20px', color:'white', fontWeight:'bold'}}
                 >
                   Admin
-                </Button>
+                </Button> */}
               </Grid>
             </Grid>
           </div>
