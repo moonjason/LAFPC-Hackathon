@@ -67,13 +67,17 @@ export const CaseStudiesDiv = styled.div`
     padding: 30px;
     height: 40vh;
     width: 50vh;
-    border: 1px solid black;
     border-radius: 3%;
     &:hover {
        opacity: .8;
     }
     background-size: cover;
     background-repeat: no-repeat;
+`
+
+export const CaseStudiesHead = styled.h4`
+    font-size: 32px;
+    
 `
 
 export const Break = styled.hr`

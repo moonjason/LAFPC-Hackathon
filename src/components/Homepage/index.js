@@ -12,7 +12,9 @@ import {HomeDiv,
         UserImgDiv,
         Break,
         Text,
-        CaseStudiesDiv} from './style'
+        CaseStudiesDiv,
+        CaseStudiesHead
+        } from './style'
 
 import afford from "./img/Afford.png"
 import fair from "./img/Fair.png"
@@ -28,17 +30,17 @@ class Home extends Component {
 
         const foodStyle = {
             backgroundImage: `url("${Food}")`,
-            border: '5px solid black'
+            border: '0px solid black'
         }
 
         const compostStyle = {
             backgroundImage: `url("${Compost}")`,
-            border: '5px solid black'
+            border: '0px solid black'
         }
 
         const plantStyle = {
             backgroundImage: `url("${Plant}")`,
-            border: '5px solid black'
+            border: '0px solid black'
         }
 
         return (
@@ -76,15 +78,15 @@ class Home extends Component {
                         <UserImg src={Compost}/> */}
                         {/* <UserImg src={Plant}/> */}
                         <CaseStudiesDiv style={foodStyle}>
-                            <h4>Food Security</h4>
+                        <CaseStudiesHead>Food Security</CaseStudiesHead>
                             <p>Food security between different age and race remains a challenge.</p>
                         </CaseStudiesDiv>
                         <CaseStudiesDiv style={compostStyle}>
-                            <h4>LA Compost</h4>
+                            <CaseStudiesHead>LA Compost</CaseStudiesHead>
                             <p>LA Compost approaches sustianability in a holistic way</p>
                         </CaseStudiesDiv>
                         <CaseStudiesDiv style={plantStyle}>
-                            <h4>Veggies Rx Program</h4>
+                            <CaseStudiesHead>Veggies Rx Program</CaseStudiesHead>
                             <p>Improving healthy food consumption through holistic healthcare approaches</p>
                         </CaseStudiesDiv>
                     </UserImgDiv>
