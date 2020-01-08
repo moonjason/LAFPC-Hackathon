@@ -16,13 +16,12 @@ class Navbar extends Component {
                             size="large"
                             className='nav-button'
                             component={ LinkRoute } 
-                            to='/sustainable'
+                            to='/sustainability'
                             style={
-                                pageUrl === 'sustainable' 
+                                pageUrl === 'sustainability' 
                                 ? {backgroundColor:'#8BC147', color:'white', fontWeight:'bold', borderColor:'#8BC147', borderBottom: '4px solid black'}
                                 : {backgroundColor:'#8BC147', color:'white', fontWeight:'bold', borderColor:'#8BC147'}
                             }
-                            onClick={() => this.setState({active: 'sustainable'})}
                         >
                             Sustainability
                         </Button>
@@ -30,13 +29,12 @@ class Navbar extends Component {
                             size="large"
                             className='nav-button'
                             component={ LinkRoute } 
-                            to='/healthy' 
+                            to='/health' 
                             style={
-                                pageUrl === 'healthy' 
+                                pageUrl === 'health' 
                                 ? {backgroundColor:'#AAE0F4', color:'white', fontWeight:'bold', borderColor:'#AAE0F4', borderBottom: '4px solid black'}
                                 : {backgroundColor:'#AAE0F4', color:'white', fontWeight:'bold', borderColor:'#AAE0F4'}
                             }
-                            onClick={() => this.setState({active: 'healthy'})}
                         >
                             Health
                         </Button>
@@ -45,13 +43,12 @@ class Navbar extends Component {
                             size="large"
                             className='nav-button' 
                             component={ LinkRoute } 
-                            to='/affordable' 
+                            to='/affordability' 
                             style={
-                                pageUrl === 'affordable' 
+                                pageUrl === 'affordability' 
                                 ? {backgroundColor:'#F4934D', color:'white', fontWeight:'bold', borderColor:'#F4934D', borderBottom: '4px solid black'}
                                 : {backgroundColor:'#F4934D', color:'white', fontWeight:'bold', borderColor:'#F4934D'}
                             }
-                            onClick={() => this.setState({active: 'affordable'})}
                         >
                             Affordability
                         </Button>
@@ -59,13 +56,12 @@ class Navbar extends Component {
                             size="large"
                             className='nav-button' 
                             component={ LinkRoute } 
-                            to='/fair' 
+                            to='/fairness' 
                             style={
-                                pageUrl === 'fair' 
+                                pageUrl === 'fairness' 
                                 ? {backgroundColor:'#D6D7AD', color:'white', fontWeight:'bold', borderColor:'#D6D7AD', borderBottom: '4px solid black'}
                                 : {backgroundColor:'#D6D7AD', color:'white', fontWeight:'bold', borderColor:'#D6D7AD'}
                             }
-                            onClick={() => this.setState({active: 'fair'})}
                         >
                             Fairness
                         </Button>
