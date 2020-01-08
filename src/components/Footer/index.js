@@ -18,9 +18,9 @@ class Footer extends Component{
                 <Container2>
                     <div>
                         {/* <h3>STAY CONNECTED</h3> */}
-                        <a href="https://www.facebook.com/LosAngelesFoodPolicyCouncil"><FacebookIcon href="https://www.facebook.com/LosAngelesFoodPolicyCouncil" style={{margin:'10px'}}/></a> 
-                        <a href="https://www.instagram.com/lagoodfood/"><InstagramIcon style={{margin:'10px'}}/></a>
-                        <a href="https://twitter.com/GoodFoodLA"><TwitterIcon style={{margin:'10px'}}/></a>
+                        <a href="https://www.facebook.com/LosAngelesFoodPolicyCouncil"><FacebookIcon href="https://www.facebook.com/LosAngelesFoodPolicyCouncil" style={{margin:'10px', color: 'white'}}/></a> 
+                        <a href="https://www.instagram.com/lagoodfood/"><InstagramIcon style={{margin:'10px', color: 'white'}}/></a>
+                        <a href="https://twitter.com/GoodFoodLA"><TwitterIcon style={{margin:'10px', color: 'white'}}/></a>
                     </div>  
                 </Container2>
             </MainContainer>
