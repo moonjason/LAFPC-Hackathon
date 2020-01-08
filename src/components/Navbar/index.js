@@ -16,11 +16,11 @@ class Navbar extends Component {
                             size="large"
                             className='nav-button'
                             component={ LinkRoute } 
-                            to='/sustainable'
+                            to='/sustainability'
                             style={
-                                pageUrl === 'sustainable' 
-                                ? {backgroundColor:'#78B350', color:'#2C3C46', fontWeight:'bold', borderColor:'#78B350'}
-                                : {backgroundColor:'#78B350', color:'white', fontWeight:'bold', borderColor:'#78B350'}
+                                pageUrl === 'sustainability' 
+                                ? {backgroundColor:'#8BC147', color:'white', fontWeight:'bold', borderColor:'#8BC147', borderBottom: '4px solid black'}
+                                : {backgroundColor:'#8BC147', color:'white', fontWeight:'bold', borderColor:'#8BC147'}
                             }
                         >
                             Sustainability
@@ -29,11 +29,11 @@ class Navbar extends Component {
                             size="large"
                             className='nav-button'
                             component={ LinkRoute } 
-                            to='/healthy' 
+                            to='/health' 
                             style={
-                                pageUrl === 'healthy' 
-                                ? {backgroundColor:'#266574', color:'#2C3C46', fontWeight:'bold', borderColor:'#266574'}
-                                : {backgroundColor:'#266574', color:'white', fontWeight:'bold', borderColor:'#266574'}
+                                pageUrl === 'health' 
+                                ? {backgroundColor:'#AAE0F4', color:'white', fontWeight:'bold', borderColor:'#AAE0F4', borderBottom: '4px solid black'}
+                                : {backgroundColor:'#AAE0F4', color:'white', fontWeight:'bold', borderColor:'#AAE0F4'}
                             }
                         >
                             Health
@@ -43,11 +43,11 @@ class Navbar extends Component {
                             size="large"
                             className='nav-button' 
                             component={ LinkRoute } 
-                            to='/affordable' 
+                            to='/affordability' 
                             style={
-                                pageUrl === 'affordable' 
-                                ? {backgroundColor:'#B94A51', color:'#2C3C46', fontWeight:'bold', borderColor:'#B94A51'}
-                                : {backgroundColor:'#B94A51', color:'white', fontWeight:'bold', borderColor:'#B94A51'}
+                                pageUrl === 'affordability' 
+                                ? {backgroundColor:'#F4934D', color:'white', fontWeight:'bold', borderColor:'#F4934D', borderBottom: '4px solid black'}
+                                : {backgroundColor:'#F4934D', color:'white', fontWeight:'bold', borderColor:'#F4934D'}
                             }
                         >
                             Affordability
@@ -56,11 +56,11 @@ class Navbar extends Component {
                             size="large"
                             className='nav-button' 
                             component={ LinkRoute } 
-                            to='/fair' 
+                            to='/fairness' 
                             style={
-                                pageUrl === 'fair' 
-                                ? {backgroundColor:'#FF8263', color:'#2C3C46', fontWeight:'bold', borderColor:'#FF8263'}
-                                : {backgroundColor:'#FF8263', color:'white', fontWeight:'bold', borderColor:'#FF8263'}
+                                pageUrl === 'fairness' 
+                                ? {backgroundColor:'#D6D7AD', color:'white', fontWeight:'bold', borderColor:'#D6D7AD', borderBottom: '4px solid black'}
+                                : {backgroundColor:'#D6D7AD', color:'white', fontWeight:'bold', borderColor:'#D6D7AD'}
                             }
                         >
                             Fairness
