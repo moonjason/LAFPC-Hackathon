@@ -1,49 +1,70 @@
-import React, { Component } from 'react'
-import { Doughnut } from 'react-chartjs-2'
-import style from './style.module.css'
+import React, { Component } from "react"
+import ReactApexChart from "react-apexcharts"
 
-
-class Donut extends Component {
-
-    colorHandler = (array, o) => {
-        const r = () => Math.floor(Math.random() * 256)
-        const b = () => Math.floor(Math.random() * 256)
-        const g = () => Math.floor(Math.random() * 256)
-        return array.map(p => `rgba(${r()},${b()},${g()}, ${o})`)
+class HealthyChart extends Component {
+    state = {
+        series: [{
+            name: 'Poverty',
+            data: [44, 54, 23]
+        }, {
+            name: 'Obesity',
+            data: [76, 85, 101]
+        }, {
+            name: 'Mental Illness',
+            data: [35, 41, 36]
+        }],
+        options: {
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '75%'
+            },
+            },
+            dataLabels: {
+                enabled: true
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: [2013, 2017, 2020],
+            },
+            yaxis: {
+                title: {
+                    text: 'Percentage of population'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return `${val}%`
+                    }
+                }
+            }
+        },
     }
-
-    hover = (array) => {
-        return array.map(c => {
-            const color = c.split(",")
-            color[3] = ".5)"
-            color.join(",")
-            return color
-        })
-    }
-
-    dataHandler = (props) => {
-        const colorArray = this.colorHandler(this.props.healthyData, 1)
-        const data = {
-            labels: props.healthyData.map(r => { return r.group }),
-            datasets: [{
-                data: props.healthyData.map(r => { return r.baseline }),
-                backgroundColor: colorArray,
-                hoverBackgroundColor: this.hover(colorArray)
-            }]
-        }
-        return data
-    }
-
     render() {
         return (
-            <div>
-                <div className={style.canvas}>
-                  <h3>{this.props.healthyData[0] && this.props.healthyData[0].indicator}</h3>
-                        <Doughnut data={this.dataHandler(this.props)} />
-                    </div>
+            <div id="chart">
+                <ReactApexChart 
+                    options={this.state.options} 
+                    series={this.state.series} 
+                    type="bar" 
+                    height={500}
+                    width={"100%"}
+                />
             </div>
         )
     }
 }
 
-export default Donut;
+export default HealthyChart

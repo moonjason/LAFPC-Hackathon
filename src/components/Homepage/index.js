@@ -4,11 +4,13 @@ import { Redirect, Switch } from 'react-router-dom'
 import {HomeDiv, 
         Tiles, 
         TileDiv,
+        Title,
         HeaderDiv,
         DescripDiv,
         Descrip,
         UserImg,
         UserImgDiv,
+        Break,
         Text} from './style'
 
 import afford from "./img/Afford.png"
@@ -35,6 +37,7 @@ class Home extends Component {
                         <a href='/affordable'><Tiles src={afford} alt={"logo"} /></a>
                         <a href='/fair'><Tiles src={fair} alt={"logo"} /></a>
                     </TileDiv>
+                    <Break></Break>
                     <DescripDiv>
                         <Descrip>
                             <h1>What</h1>
@@ -50,7 +53,8 @@ class Home extends Component {
                             <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </Text>
                         </Descrip>
                     </DescripDiv>
-                        <h1>Case Studies</h1>
+                    <Break></Break>
+                        <Title>Case Studies</Title>
                     <UserImgDiv>
                         <UserImg src={Food}/>
                         <UserImg src={Compost}/>
