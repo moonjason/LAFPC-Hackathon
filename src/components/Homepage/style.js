@@ -57,6 +57,20 @@ export const UserImg = styled.img`
        opacity: .8;
     }
 `
+
+export const CaseStudiesDiv = styled.div`
+    color: white;
+    padding: 30px;
+    height: 40vh;
+    width: 50vh;
+    border-radius: 10%;
+    &:hover {
+       opacity: .8;
+    }
+    background-size: cover;
+    background-repeat: no-repeat;
+`
+
 export const Break = styled.hr`
     width: 80%;
     border: 1.25px solid lightgray;
