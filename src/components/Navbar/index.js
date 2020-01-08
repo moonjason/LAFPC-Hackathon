@@ -9,7 +9,7 @@ class Navbar extends Component {
         return (
           <div>
             <Grid container spacing={3}>
-                <Grid item xs={12} style={{marginLeft: '30px', marginRight: '30px'}}>
+                <Grid item xs={12}>
                     <ButtonGroup fullWidth aria-label="full width outlined button group">
                         <Button
                             size='large'
