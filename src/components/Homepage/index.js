@@ -23,8 +23,6 @@ import Food from "./img/food-la.jpeg"
 import Compost from "./img/compost-ground.jpg"
 import Plant from "./img/green-plant.jpg"
 
-
-
 class Home extends Component {
     render() {
 

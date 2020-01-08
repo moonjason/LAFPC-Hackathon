@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 
+
 export const HomeDiv = styled.div`
     text-align: center;
 `
@@ -60,10 +61,14 @@ export const UserImg = styled.img`
 
 export const CaseStudiesDiv = styled.div`
     color: white;
+    font-size: 22px;
+    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0 10px;
     padding: 30px;
     height: 40vh;
     width: 50vh;
-    border-radius: 10%;
+    border: 1px solid black;
+    border-radius: 3%;
     &:hover {
        opacity: .8;
     }
