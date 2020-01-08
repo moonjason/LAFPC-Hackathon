@@ -19,7 +19,7 @@ import fair from "./img/Fair.png"
 import health from "./img/Health.png"
 import sus from "./img/Sus.png"
 
-import Food from "./img/Food.png"
+import Food from "./img/food-la.jpeg"
 import Compost from "./img/compost-ground.jpg"
 import Plant from "./img/green-plant.jpg"
 
