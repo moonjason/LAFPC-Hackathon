@@ -10,7 +10,7 @@ export const Container1 = styled.div`
     color: #fff;
     display: flex;
     justify-content: center;
-    padding: 10px 20px 10px 20px;
+    padding: -20px 20px 10px 20px;
 `
 export const Container2 = styled.div`
     background-color: #2e6472;
@@ -32,9 +32,9 @@ export const RightDiv = styled.div`
 `
 
 export const FooterLogo = styled.img` 
-    position: absolute;
-    left: 5%;
-    bottom:1.5%
+    position: relative;
+    margin-top: 130px;
+    justify-content: flex-end;
     width: 100px;
     height: 100px; 
 `
