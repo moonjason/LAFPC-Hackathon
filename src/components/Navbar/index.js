@@ -19,10 +19,9 @@ class Navbar extends Component {
                             to='/sustainable'
                             style={
                                 pageUrl === 'sustainable' 
-                                ? {backgroundColor:'#8BC147', color:'white', fontWeight:'bold', borderColor:'#8BC147', borderBottom: '4px solid black'}
+                                ? {backgroundColor:'#8BC147', color:'#2C3C46', fontWeight:'bold', borderColor:'#8BC147'}
                                 : {backgroundColor:'#8BC147', color:'white', fontWeight:'bold', borderColor:'#8BC147'}
                             }
-                            onClick={() => this.setState({active: 'sustainable'})}
                         >
                             Sustainability
                         </Button>
@@ -33,10 +32,9 @@ class Navbar extends Component {
                             to='/healthy' 
                             style={
                                 pageUrl === 'healthy' 
-                                ? {backgroundColor:'#AAE0F4', color:'white', fontWeight:'bold', borderColor:'#AAE0F4', borderBottom: '4px solid black'}
+                                ? {backgroundColor:'#AAE0F4', color:'#2C3C46', fontWeight:'bold', borderColor:'#AAE0F4'}
                                 : {backgroundColor:'#AAE0F4', color:'white', fontWeight:'bold', borderColor:'#AAE0F4'}
                             }
-                            onClick={() => this.setState({active: 'healthy'})}
                         >
                             Health
                         </Button>
@@ -48,10 +46,9 @@ class Navbar extends Component {
                             to='/affordable' 
                             style={
                                 pageUrl === 'affordable' 
-                                ? {backgroundColor:'#F4934D', color:'white', fontWeight:'bold', borderColor:'#F4934D', borderBottom: '4px solid black'}
+                                ? {backgroundColor:'#F4934D', color:'#2C3C46', fontWeight:'bold', borderColor:'#F4934D'}
                                 : {backgroundColor:'#F4934D', color:'white', fontWeight:'bold', borderColor:'#F4934D'}
                             }
-                            onClick={() => this.setState({active: 'affordable'})}
                         >
                             Affordability
                         </Button>
@@ -62,10 +59,9 @@ class Navbar extends Component {
                             to='/fair' 
                             style={
                                 pageUrl === 'fair' 
-                                ? {backgroundColor:'#D6D7AD', color:'white', fontWeight:'bold', borderColor:'#D6D7AD', borderBottom: '4px solid black'}
+                                ? {backgroundColor:'#D6D7AD', color:'#2C3C46', fontWeight:'bold', borderColor:'#D6D7AD'}
                                 : {backgroundColor:'#D6D7AD', color:'white', fontWeight:'bold', borderColor:'#D6D7AD'}
                             }
-                            onClick={() => this.setState({active: 'fair'})}
                         >
                             Fairness
                         </Button>
