@@ -4,7 +4,7 @@ import { Link as LinkRoute } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import logo from "./img/FPC-Logo.png"
-import Banner from "./img/apples-banner.png"
+import Banner from "./img/veggies-banner.png"
 import HomeIcon from '@material-ui/icons/Home';
 
 
