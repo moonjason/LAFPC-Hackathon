@@ -43,7 +43,7 @@ class SignIn extends Component {
     const isValid = await this.validate();
     if(isValid === true) {
         const login = this.props.login(this.state)
-        login.then(() => {this.props.history.push('/admin-home')})
+        login.then(() => {this.props.history.push('/')})
     }
   }
 

@@ -129,13 +129,12 @@ s
               {
                 this.state.isLogged
                 ?
-                <Route exact path='/admin-home' render={() => <AdminHome />}/>
+                <Route exact path='/' render={(props) => <AdminHome {...props}/>}/>
                 : 
                 <Route exact path='/' render={(props) =>  <Homepage {...props} />}  />
               }
               <Route exact path='/addadmin' render={(props) =>  <AddAdmin register={this.register}  {...props} />} />
               <Route exact path='/' render={(props) =>  <Homepage {...props} />}  />
-              <Route exact path='/home' render={(props) =>  <Homepage {...props} />}  />
               <Route exact path='/affordable' render={() => <Affordable  isLogged={this.state.isLogged}/>}/>
               <Route exact path='/healthy' render={() => <Healthy isLogged={this.state.isLogged}/>}/>
               <Route exact path='/fair' render={() => <Fair isLogged={this.state.isLogged}/>}/>

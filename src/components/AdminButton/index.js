@@ -22,7 +22,7 @@ class AdminButton extends Component {
               <Grid item xs>
                 <div>
                   <div style={{textAlign:'center', alignItems: 'center'}}>
-                    <Button size='large' component={ LinkRoute } to='/home' style={{color:'white', fontWeight: 'bold'}}>
+                    <Button size='large' component={ LinkRoute } to='/' style={{color:'white', fontWeight: 'bold'}}>
                       LAFPC Food System Dashboard
                     </Button>
                   </div>
