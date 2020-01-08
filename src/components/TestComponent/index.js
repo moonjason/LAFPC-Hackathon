@@ -6,7 +6,6 @@ import HealthyChart from "./HealthyChart"
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -27,6 +26,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Checkbox from '@material-ui/core/Checkbox';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+
+import DropdownPanel from '../DropdownPanel';
 
 // Material UI Themes
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -450,6 +451,9 @@ class TestComponent extends Component {
                             width={600}
                         />
                     </div>
+                    <S.DropDown>
+                        <DropdownPanel />
+                    </S.DropDown>
                 </S.Container2>
             </S.Container1>
         )
