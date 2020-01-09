@@ -7,11 +7,11 @@ const NavLink = styled(Link)`
   font-size: 12px;
   font-family: 'Roboto' , sans-serif;
   margin-left: 2%;
-  padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+  padding: 0.4rem 0.4rem 0.4rem 0.4rem;
   text-transform: uppercase;  
   color: white;
   opacity: 1;
-  border: 2px inset white;
+  border: 1.25px solid white;
   border-radius: 40%;
   
   
