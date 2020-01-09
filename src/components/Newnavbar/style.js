@@ -18,10 +18,11 @@ const NavStyle = styled.nav`
     max-width: 100%;
     margin: 0 auto;
     display: flex;
-    padding: 5px;
+    padding: 5px 0px;
 
-    @media (min-width: 1000px) {
-      max-width: 58.5%;
+    @media (min-width: 1200px) {
+      max-width: 100.0%;
+      padding: 5px 5px 5px 0px;
     }
   }
 
@@ -51,10 +52,11 @@ const NavStyle = styled.nav`
       margin-left: 2.5rem;
     }
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1200px) {
+      margin-left: 0px;
       text-align: right;
-      width: 10%;
-      margin-left: 3.0rem;
+      width: 12%;
+      padding-left: 25rem;
     }
 
   }
@@ -80,7 +82,7 @@ const NavStyle = styled.nav`
     }
 
     @media (min-width: 721px) {
-      width: 65%;
+      width: 64%;
     }
 
   }
@@ -101,13 +103,14 @@ const NavStyle = styled.nav`
     }
 
     @media (min-width: 721px) {
-      width: 30%;
-      margin-right: 5.0rem;
+      width: 40%;
+      padding-right: 15rem;
     }
 
-    @media (min-width: 1000px) {
-      width: 35%;
-      margin-right: 5.2rem;
+    @media (min-width: 1200px) {
+      width: 40%;
+      /* margin-right: 10.0rem; */
+      padding-right: 20rem;
     }
 
   }
