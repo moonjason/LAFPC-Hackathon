@@ -4,31 +4,6 @@ import { dark } from "@material-ui/core/styles/createPalette"
 
 class HealthyChart extends Component {
     state = {
-        series: [{
-            name: "Food Insecurity (overall)",
-            data: [44, 54, 23],
-        }, {
-            name: 'Food Insecurity (low)',
-            data: [76, 85, 101]
-        }, {
-            name: 'Food Insecurity (very low)',
-            data: [35, 41, 36]
-        }, {
-            name: 'Overweight',
-            data: [35, 41, 36]
-        }, {
-            name: 'Obesity',
-            data: [35, 41, 36]
-        }, {
-            name: 'Diabetes',
-            data: [35, 41, 36]
-        }, {
-            name: 'High Cholesterol',
-            data: [35, 41, 36]
-        }, {
-            name: "Hypertension",
-            data: [21, 2, 6]
-        }],
         options: {
             chart: {
                 type: 'bar',
@@ -80,7 +55,7 @@ class HealthyChart extends Component {
             fill: {
                 opacity: 1
             },
-            colors:['#DB5461', '#218380', '#4DFFF3'],
+            colors:['#DB5461', '#218380', '#FF8263'],
             tooltip: {
                 y: {
                     formatter: function (val) {
@@ -90,58 +65,6 @@ class HealthyChart extends Component {
             }
         },
     }
-    componentDidMount() {
-        // this.refreshGraph()
-    }
-    // refreshGraph = () => {
-    //     const series = this.props.indicators.map(indicator => {
-    //         if(indicator === "food-insecurity-overall") {
-    //             return {
-    //                 name: "Food Insecurity (overall)",
-    //                 data: [123,2141,45]
-    //             }
-    //         } else if (indicator === "food-insecurity-low") {
-    //             return {
-    //                 name: "Food Insecurity (overall)",
-    //                 data: [123,2141,45]
-    //             }
-    //         } else if(indicator === "food-insecurity-vlow") {
-    //             return {
-    //                 name: "Food Insecurity (overall)",
-    //                 data: [123,2141,45]
-    //             }
-    //         } else if (indicator === "overweight") {
-    //             return {
-    //                 name: "Food Insecurity (overall)",
-    //                 data: [123,2141,45]
-    //             }
-    //         } else if (indicator === "obesity") {
-    //             return {
-    //                 name: "Food Insecurity (overall)",
-    //                 data: [123,2141,45]
-    //             }
-    //         } else if(indicator === "diabetes") {
-    //             return {
-    //                 name: "Food Insecurity (overall)",
-    //                 data: [123,2141,45]
-    //             }
-    //         } else if(indicator === "high-cholesterol") {
-    //             return {
-    //                 name: "Food Insecurity (overall)",
-    //                 data: [123,2141,45]
-    //             }
-    //         } else if(indicator === "hypertension") {
-    //             return {
-    //                 name: "Food Insecurity (overall)",
-    //                 data: [123,2141,45]
-    //             }
-    //         }
-    //     })
-    //     console.log(series, "this")
-    //     // this.setState({
-    //     //     series
-    //     // })
-    // }
     render() {
         return (
             <div id="chart">

@@ -57,7 +57,9 @@ class TestComponent extends Component {
     state = {
         affordableData: [],
         indicators: ["food-insecurity-overall"],
-        ageGroup: "eighteen",
+        filter: "ageGroup",
+        nextFilter: "eighteen",
+        ethnicity: "",
         series: [],
     }
 
@@ -67,7 +69,14 @@ class TestComponent extends Component {
     }
     selectIndicators = (e) => {
         if(this.state.indicators.length === 3 && e.target.checked) {
-            e.target.checked = false
+            const newArr = [...this.state.indicators]
+            document.querySelector(`#${newArr.shift()}`).checked = false
+            newArr.push(e.target.id)
+            this.setState({
+                indicators: newArr
+            }, () => {
+                this.refreshGraph()
+            })
             return
         }
         // if(this.state.indicators.length === 1 && e.target.checked === false) {
@@ -90,9 +99,33 @@ class TestComponent extends Component {
             })
         }
     }
+    selectFilter = (e) => {
+        console.log(e.currentTarget.id)
+        const nextFilter = e.currentTarget.id === "ageGroup" ? "eighteen" : e.currentTarget.id === "raceEthnicity" ? "africanAmerican" : "belowFpl" 
+        this.setState({
+            filter: e.currentTarget.id,
+            nextFilter
+        }, () => {
+            this.refreshGraph()
+        })
+    }
     selectAge = (age) => {
         this.setState({
-            ageGroup: age
+            nextFilter: age
+        }, () => {
+            this.refreshGraph()
+        })
+    }
+    selectEthnicity = (ethnicity) => {
+        this.setState({
+            nextFilter: ethnicity
+        }, () => {
+            this.refreshGraph()
+        })
+    }
+    selectLevel = (level) => {
+        this.setState({
+            nextFilter: level
         }, () => {
             this.refreshGraph()
         })
@@ -100,9 +133,11 @@ class TestComponent extends Component {
     refreshGraph = () => {
         const series = this.state.indicators.map(indicator => {
             if(indicator === "food-insecurity-overall") {
-                const firstYear = Math.trunc(data["2011"]["overallFoodInsecurity"]["ageGroup"][`${this.state.ageGroup}`]*100)
-                const secondYear = Math.trunc(data["2015"]["foodInsecure"]["ageGroup"][`${this.state.ageGroup}`]*100)
-                const thirdYear = Math.trunc(data["2018"]["foodInsecure"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                console.log(this.state.filter, "filter")
+                console.log(this.state.nextFilter, "nextFilter")
+                const firstYear = Math.trunc(data["2011"]["overallFoodInsecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const secondYear = Math.trunc(data["2015"]["foodInsecure"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["foodInsecure"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
                 return {
                     name: "Food Insecurity (overall)",
@@ -111,7 +146,7 @@ class TestComponent extends Component {
             } else if (indicator === "food-insecurity-low") {
                 const firstYear = 0
                 const secondYear = 0
-                const thirdYear = Math.trunc(data["2018"]["lowFoodSecurity"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["lowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
                 return {
                     name: "Food Insecurity (low)",
@@ -120,7 +155,7 @@ class TestComponent extends Component {
             } else if(indicator === "food-insecurity-vlow") {
                 const firstYear = 0
                 const secondYear = 0
-                const thirdYear = Math.trunc(data["2018"]["veryLowFoodSecurity"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["veryLowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
                 return {
                     name: "Food Insecurity (very low)",
@@ -129,7 +164,7 @@ class TestComponent extends Component {
             } else if (indicator === "overweight") {
                 const firstYear = 0
                 const secondYear = 0
-                const thirdYear = Math.trunc(data["2018"]["overweight"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["overweight"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
                 return {
                     name: "Overweight",
@@ -138,34 +173,34 @@ class TestComponent extends Component {
             } else if (indicator === "obesity") {
                 const firstYear = 0
                 const secondYear = 0
-                const thirdYear = Math.trunc(data["2018"]["obese"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["obese"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
                 return {
                     name: "Obesity",
                     data: newData
                 }
             } else if(indicator === "diabetes") {
-                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithDiabetes"]["ageGroup"][`${this.state.ageGroup}`]*100)
-                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithDiabetes"]["ageGroup"][`${this.state.ageGroup}`]*100)
-                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithDiabetes"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithDiabetes"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithDiabetes"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithDiabetes"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
                 return {
                     name: "Diabetes",
                     data: newData
                 }
             } else if(indicator === "high-cholesterol") {
-                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithHighCholesterol"]["ageGroup"][`${this.state.ageGroup}`]*100)
-                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithHighCholesterol"]["ageGroup"][`${this.state.ageGroup}`]*100)
-                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithHighCholesterol"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithHighCholesterol"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithHighCholesterol"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithHighCholesterol"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
                 return {
                     name: "High Cholesterol",
                     data: newData
                 }
             } else if(indicator === "hypertension") {
-                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithHypertension"]["ageGroup"][`${this.state.ageGroup}`]*100)
-                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithHypertension"]["ageGroup"][`${this.state.ageGroup}`]*100)
-                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithHypertension"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithHypertension"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithHypertension"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithHypertension"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
                 return {
                     name: "Hypertension",
@@ -183,12 +218,12 @@ class TestComponent extends Component {
         return (
             <S.Container1>
                 <S.DescribSec>
-                    <h1>Affordable</h1>
+                    <h1>Affordability</h1>
                     <S.DescribPar>All Angelenos, regardless of their income level, should have the ability to access Good Food. Affordability is an essential component of access. Supplemental nutrition programs such as SNAP, formerly known as food stamps, and Women, Infants and Children (WIC) increase the accessibility of food by expanding the food budgets of program participants, most of whom are low-income children, families and seniors. Prioritizing affordability means ensuring that our most vulnerable populations can access Good Food through the acceptance of supplemental nutrition vouchers and other strategies.</S.DescribPar>
 
                 </S.DescribSec>
                 <S.Container2>
-                    <HealthyIndicators selectIndicators={this.selectIndicators} selectAge={this.selectAge} refreshGraph={this.refreshGraph}/>
+                    <HealthyIndicators selectIndicators={this.selectIndicators} selectFilter={this.selectFilter} selectAge={this.selectAge} selectEthnicity={this.selectEthnicity} selectLevel={this.selectLevel} refreshGraph={this.refreshGraph}/>
                         {/* <ThemeProvider theme={theme}>
                         <ExpansionPanel>
                             <ExpansionPanelSummary
