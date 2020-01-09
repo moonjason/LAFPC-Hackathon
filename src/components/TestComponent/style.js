@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const S = {};
 
 S.Container1 = styled.div`
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,27 +11,25 @@ S.Container1 = styled.div`
 
 S.Container2 = styled.div`
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 20rem 50rem;
   grid-column-gap: 8rem;
+  margin-bottom: 75px;
 `
 
-S.DropDown = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 25px;
-`
 S.Graph = styled.div`
   margin: 10px 0;
 `
 
 S.DescribSec = styled.div`
  text-align: center;
- margin: 0 10% 0 10%;
+ margin: 3% 10% 0 10%;
 `
 S.DescribPar = styled.p`
+ width: 90%;
+ margin: 0 auto;
+ margin-bottom: 5rem;
  text-align: left;
- margin: 2% 0 2% 0;
+ line-height: 25px;
 `
 
 export default S

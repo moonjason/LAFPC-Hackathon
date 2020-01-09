@@ -4,30 +4,35 @@ import { dark } from "@material-ui/core/styles/createPalette"
 
 class HealthyChart extends Component {
     state = {
-        series: [{
-            name: 'Poverty',
-            data: [44, 54, 23],
-            color: "red"
-        }, {
-            name: 'Obesity',
-            data: [76, 85, 101]
-        }, {
-            name: 'Mental Illness',
-            data: [35, 41, 36]
-        }],
         options: {
             chart: {
                 type: 'bar',
                 height: 350
             },
             plotOptions: {
-            bar: {
-                horizontal: false,
-                columnWidth: '75%'
-            },
+                bar: {
+                    horizontal: false,
+                    columnWidth: '75%',
+                    dataLabels: {
+                        position: "top"
+                    }
+                },
             },
             dataLabels: {
-                enabled: true
+                enabled: true,
+                formatter: function (val, opts) {
+                    return `${val}%`
+                },
+                offsetY: -20,
+                style: {
+                    fontSize: '14px',
+                    fontFamily: 'Helvetica, Arial, sans-serif',
+                    fontWeight: 'bold',
+                    colors: ["black"]
+                },
+            },
+            legend: {
+                showForSingleSeries: true
             },
             stroke: {
                 show: true,
@@ -35,17 +40,22 @@ class HealthyChart extends Component {
                 colors: ['transparent']
             },
             xaxis: {
-                categories: [2013, 2017, 2020],
+                categories: [2011, 2015, 2018],
+                title: {
+                    text: "Years (2011-2018)"
+                }
             },
             yaxis: {
+                min: 0,
+                max: 100,
                 title: {
-                    text: 'Percentage of population'
+                    text: 'Percentage of LA County population'
                 }
             },
             fill: {
                 opacity: 1
             },
-            colors:['#DB5461', '#218380', '#4DFFF3'],
+            colors:['#DB5461', '#218380', '#FF8263'],
             tooltip: {
                 y: {
                     formatter: function (val) {
@@ -60,7 +70,7 @@ class HealthyChart extends Component {
             <div id="chart">
                 <ReactApexChart 
                     options={this.state.options} 
-                    series={this.state.series} 
+                    series={this.props.series} 
                     type="bar" 
                     height={500}
                     width={"100%"}
