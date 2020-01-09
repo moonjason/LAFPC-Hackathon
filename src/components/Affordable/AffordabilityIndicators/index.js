@@ -123,7 +123,7 @@ class AffordabilityIndicators extends Component {
                             <input id="latino" type="radio" name="ethnicity" onClick={this.handleEthnicity}></input>
                             <S.LabelTitle>Latin X</S.LabelTitle>
                         </S.Label>
-                        <S.Label>
+                        <S.Label border="1px solid transparent">
                             <input id="white" type="radio" name="ethnicity" onClick={this.handleEthnicity}></input>
                             <S.LabelTitle>White</S.LabelTitle>
                         </S.Label>
@@ -145,7 +145,7 @@ class AffordabilityIndicators extends Component {
                             <input id="twoHundredFpl" type="radio" name="FPL" onClick={this.handleLevel}></input>
                             <S.LabelTitle>200 - 299%</S.LabelTitle>
                         </S.Label>
-                        <S.Label>
+                        <S.Label border="1px solid transparent">
                             <input id="threeHundredFpl" type="radio" name="FPL" onClick={this.handleLevel}></input>
                             <S.LabelTitle>300% or greater</S.LabelTitle>
                         </S.Label>

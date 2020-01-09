@@ -45,7 +45,7 @@ class AdminButton extends Component {
                 <Button
                   variant="contained" 
                   color="primary"
-                  style={{fontWeight: 'bold', color: '#FFFB00'}}
+                  style={{fontWeight: 'bold', color: 'white', backgroundColor: '#78B350', border: '1px solid white', borderRadius: "20px"}}
                 >
                   Donate
                 </Button>

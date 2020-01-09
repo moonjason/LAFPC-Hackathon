@@ -1,297 +1,278 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import AffordableData from './AffordableData';
-import EditAffordable from './EditAffordable';
-import Donut from './AffordChart';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
+import data from "./rawDataAffordable"
+import AffordabilityChart from "./AffordabilityChart"
+import AffordabilityIndicators from "./AffordabilityIndicators"
+// import Button from '@material-ui/core/Button';
+// import EditIcon from '@material-ui/icons/Edit';
+// import DeleteIcon from 'n@material-ui/icons/Delete';
+
+// import { makeStyles } from '@material-ui/core/styles';
+// import FormControl from '@material-ui/core/FormControl';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Select from '@material-ui/core/Select';
+// import NativeSelect from '@material-ui/core/NativeSelect';
+// import Menu from '@material-ui/core/Menu';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import DraftsIcon from '@material-ui/icons/Drafts';
+// import SendIcon from '@material-ui/icons/Send';
+// import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+// import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+// import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+// import Typography from '@material-ui/core/Typography';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import Checkbox from '@material-ui/core/Checkbox';
+// import Radio from '@material-ui/core/Radio';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+import DataCard from '../DataCard';
+
+// Material UI Themes
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import './TestComponent.css'
+
+// Styled Components
+import S from './style'
 
 
-import {
-  Container,
-  DivDataModal,
-  ContainModal,
-  Table,
-  Row,
-  TableData,
-  TableDataHeader,
-  TableDataButton,
-  H1,
-  P,
-  DescribSec,
-  DescribPar,
-  ChartDiv,
-  ToolKit
-} from './style'
-
-class Affordable extends Component {
-
-  state = {
-    affordableData: [],
-    showEditModal: false,
-    showDataModal: false,
-    dataModalProperty: '',
-    editData: {
-      _id: null,
-      value:'affordable',
-      indicator: '',
-      baseline: '',
-      update: '',
-      sources: '',
-      change: '',
-      notes: '',
-      dataStatus: '',
-      group: '',
-      error: ''
-    },
-  }
-
-  componentDidMount = () => {
-    this.getData()
-  }
-
-  getData = async () => {
-    try { 
-      const data = await fetch(`http://localhost:3030/data/get-data`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      const oldData = await data.json()
-      const affordData = oldData.data.filter(data => data.value === 'affordable')
-      this.setState({
-        affordableData: affordData
-      })
-
-    }catch (err) {
-      console.log(err)
+const theme = createMuiTheme({
+    typography: {
+        fontFamily: [
+            'Arbutus Slab',
+            'Nunito',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif'
+        ].join(','),
     }
-  }
+});
 
-  addData = async (data) => {
-    try {
-      const addDataResponse = await fetch(`http://localhost:3030/data/add-data`, {
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      const parsedResponse = await addDataResponse.json()
-      this.setState({
-        affordableData: [...this.state.affordableData, parsedResponse.data]
-      })
-    } catch(err) {
-      console.log(err, 'this is error from add data')
+
+
+class Affordability extends Component {
+
+    state = {
+        affordableData: [],
+        indicators: ["food-insecurity-overall"],
+        filter: "ageGroup",
+        nextFilter: "eighteen",
+        ethnicity: "",
+        series: [],
     }
-  }
-  
-  handleFormChange = (e) => {
-    this.setState({
-      editData: {
-        ...this.state.editData, 
-        [e.target.name]: e.target.value
-      }
-    })
-  }
 
-  closeAndEdit = async (e) => {
-    e.preventDefault();
-        try {
-          const editRequest = await fetch(`http://localhost:3030/data/${this.state.editData._id}/update-data`, {
-            method: 'PUT',
-            credentials: 'include',
-            body: JSON.stringify(this.state.editData),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-          if(editRequest.status !== 200){
-            throw Error('editResquest not working')
-          }
-          const editResponse = await editRequest.json();
-          const editDataArray = this.state.affordableData.map((data) => {
-            if(data._id === editResponse.data._id){
-              data = editResponse.data
-            }
-            return data
-          });
-          this.setState({
-            affordableData: editDataArray,
-            showEditModal: false
-          })
-          this.props.history.push('/affordable')
-        } catch(err){
-          console.log(err, ' error closeAndEdit');
-          return err
+    componentDidMount = () => {
+        console.log(data," thi")
+        this.refreshGraph()
+    }
+    selectIndicators = (e) => {
+        if(this.state.indicators.length === 3 && e.target.checked) {
+            const newArr = [...this.state.indicators]
+            document.querySelector(`#${newArr.shift()}`).checked = false
+            newArr.push(e.target.id)
+            this.setState({
+                indicators: newArr
+            }, () => {
+                this.refreshGraph()
+            })
+            return
+        }
+        // if(this.state.indicators.length === 1 && e.target.checked === false) {
+        //     e.target.checked = true
+        //     return
+        // }
+        if(e.target.checked) {
+            this.setState({
+                indicators: [...this.state.indicators, e.target.id]
+            }, () => {
+                this.refreshGraph()
+            })
+        } else if(e.target.checked === false){
+            const newArr = [...this.state.indicators]
+            newArr.splice(newArr.indexOf(e.target.id), 1)
+            this.setState({
+                indicators: [...newArr]
+            }, () => {
+                this.refreshGraph()
+            })
         }
     }
-
-  editData = (data) => {
-    this.setState({
-      showEditModal: !this.showEditModal,
-      editData: data
-    })
-  }
-
-  cancelEdit = () => {
-    this.setState({
-      showEditModal: false
-    })
-  }
-
-  delete = async (id) => {
-    try {
-      const deleteData = await fetch(`http://localhost:3030/data/${id}`, {
-        method: 'DELETE',
-        credentials: 'include',
-      });
-      if(deleteData.status !== 200){
-        throw Error('Something happend on delete')
-      }
-      const deleteDataJson = await deleteData.json();
-      this.setState({
-        affordableData: this.state.affordableData.filter((data) => data._id !== id)
-      })
-    } catch(err){
-      console.log(err);
-      return err
+    selectFilter = (e) => {
+        console.log(e.currentTarget.id)
+        const nextFilter = e.currentTarget.id === "ageGroup" ? "eighteen" : e.currentTarget.id === "raceEthnicity" ? "africanAmerican" : "belowFpl" 
+        this.setState({
+            filter: e.currentTarget.id,
+            nextFilter
+        }, () => {
+            this.refreshGraph()
+        })
     }
-  }
-
-  closeDataModal = () => {
-    this.setState({
-      showDataModal: false
-    })
-  }
-
-  showData = e => {
-    this.setState({
-      showDataModal: !this.state.showDataModal,
-      dataModalProperty: e.target.textContent
-    })
-  }
-
-    render(){
-      const { affordableData, editData, showEditModal, showDataModal, dataModalProperty } = this.state;
-      const { isLogged } = this.props.isLogged
-      console.log(this.props.isLogged, 'this is logged')
-        return(
-          <Container>
-            {
-              showEditModal
-              ?
-              <EditAffordable  cancelEdit={this.cancelEdit} closeAndEdit={this.closeAndEdit} editData={editData} handleFormChange={this.handleFormChange}/>
-              :
-              null
-            }
-            {
-              showDataModal
-              ?
-              <DivDataModal onClick={() => this.closeDataModal()}>
-                <ContainModal>
-                  {dataModalProperty}
-                </ContainModal>
-              </DivDataModal>
-              :
-              null
-            }
-            <DescribSec>
-              <h1>Affordable</h1>
-              <DescribPar>Food is integral to the health and quality of life of individuals and communities. Healthy food is nutritious, delicious and safe. Healthy food meets recommended dietary guidelines and supports the body’s ability to fight disease and heal. All people deserve access to healthy food that is affordable, conveniently availability and culturally relevant.</DescribPar>
-              
-              <DescribPar>Not all communities live in neighborhoods where “the healthy choice is the easy choice,” and instead are surrounded by unhealthy food retail such as liquor stores, convenience stores and fast food restaurants. Through the numerous policy, systems and environmental changes led by stakeholders throughout the LAFPC network, we are collectively innovating solutions for overcoming systemic barriers to healthy food access— tailoring these innovations to the unique dynamics of the communities that we serve.</DescribPar>
-              
-              <DescribPar>In this section, we explore progress towards improving the health of ALL Angelenos by evaluating disparities and change over time in the following categories: Increased healthy food access, Improved eating habits amongst adults & children, Rates of obesity, Rates of diet-related diseases.</DescribPar>
-            </DescribSec>
-            <Table>
-              <Row>
-                {
-                  this.props.isLogged
-                  ?
-                  <TableDataHeader>ADMIN</TableDataHeader>
-                  :
-                  null
-                }
-                <TableDataHeader><H1>Indicator</H1></TableDataHeader>
-                <TableDataHeader><H1>Baseline</H1></TableDataHeader>
-                <TableDataHeader><H1>Update</H1></TableDataHeader>
-                <TableDataHeader><H1>Sources</H1></TableDataHeader>
-                <TableDataHeader><H1>Change</H1></TableDataHeader>
-                <TableDataHeader><H1>Notes</H1></TableDataHeader>
-                <TableDataHeader><H1>Data Status</H1></TableDataHeader>
-                <TableDataHeader><H1>Group</H1></TableDataHeader>
-              </Row>
-              {
-                affordableData.map((data, i) => {
-                  return (
-                    <Row key={i}>
-                      {
-                        this.props.isLogged
-                        ?
-                          <TableDataButton>
-                            <Button onClick={() => this.editData(data)}><EditIcon /></Button>
-                            <Button onClick={() => this.delete(data._id)}><DeleteIcon /></Button>
-                          </TableDataButton>
-                        :
-                          null
-                      }
-                      <TableData onClick={(e) => this.showData(e)}>
-                        <P>{data.indicator}</P>
-                      </TableData>
-                      <TableData onClick={(e) => this.showData(e)}>
-                        <P>{data.baseline}</P>
-                      </TableData>
-                      <TableData onClick={(e) => this.showData(e)}>
-                        <P>{data.update}</P>
-                      </TableData>
-                      <TableData onClick={(e) => this.showData(e)}>
-                        <P>{data.sources}</P>
-                      </TableData>
-                      <TableData onClick={(e) => this.showData(e)}>
-                        <P>{data.change}</P>
-                      </TableData>
-                      <TableData onClick={(e) => this.showData(e)}>
-                        <P>{data.notes}</P>
-                      </TableData>
-                      <TableData onClick={(e) => this.showData(e)}>
-                        <P>{data.dataStatus}</P>
-                      </TableData>
-                      <TableData onClick={(e) => this.showData(e)}>
-                        <P>{data.group}</P>
-                      </TableData>
-                    </Row>
-                  )
+    selectAge = (age) => {
+        this.setState({
+            nextFilter: age
+        }, () => {
+            this.refreshGraph()
+        })
+    }
+    selectEthnicity = (ethnicity) => {
+        this.setState({
+            nextFilter: ethnicity
+        }, () => {
+            this.refreshGraph()
+        })
+    }
+    selectLevel = (level) => {
+        this.setState({
+            nextFilter: level
+        }, () => {
+            this.refreshGraph()
+        })
+    }
+    refreshGraph = () => {
+        const series = this.state.indicators.map(indicator => {
+            if(indicator === "food-insecurity-overall") {
+                console.log(this.state.filter, "filter")
+                console.log(this.state.nextFilter, "nextFilter")
+                const firstYear = Math.trunc(data["2011"]["overallFoodInsecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const secondYear = Math.trunc(data["2015"]["foodInsecure"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["foodInsecure"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
                 })
-              }
-            </Table>
-            {
-              this.props.isLogged
-              ?
-                <AffordableData addData={this.addData}/>
-              :
-                null
+                return {
+                    name: "Food Insecurity (overall)",
+                    data: newData
+                }
+            } else if (indicator === "food-insecurity-low") {
+                const firstYear = Math.trunc(data["2011"]["lowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const secondYear = 0
+                console.log(data["2011"]["lowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["lowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
+                return {
+                    name: "Food Insecurity (low)",
+                    data: newData
+                }
+            } else if(indicator === "food-insecurity-vlow") {
+                const firstYear = Math.trunc(data["2011"]["veryLowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const secondYear = Math.trunc(data["2015"]["veryLowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["veryLowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
+                return {
+                    name: "Food Insecurity (very low)",
+                    data: newData
+                }
+            } else if (indicator === "overweight") {
+                const firstYear = 0
+                const secondYear = 0
+                const thirdYear = Math.trunc(data["2018"]["overweight"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
+                return {
+                    name: "Overweight",
+                    data: newData,
+                }
+            } else if (indicator === "obesity") {
+                const firstYear = 0
+                const secondYear = 0
+                const thirdYear = Math.trunc(data["2018"]["obese"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
+                return {
+                    name: "Obesity",
+                    data: newData
+                }
+            } else if(indicator === "diabetes") {
+                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithDiabetes"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithDiabetes"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithDiabetes"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
+                return {
+                    name: "Diabetes",
+                    data: newData
+                }
+            } else if(indicator === "high-cholesterol") {
+                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithHighCholesterol"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithHighCholesterol"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithHighCholesterol"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
+                return {
+                    name: "High Cholesterol",
+                    data: newData
+                }
+            } else if(indicator === "hypertension") {
+                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithHypertension"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithHypertension"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithHypertension"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
+                return {
+                    name: "Hypertension",
+                    data: newData
+                }
             }
-            <ChartDiv>
-              <ToolKit>
-                  <Button style={{backgroundColor:'#F4934D', marginTop:"10px"}} fullWidth>Number of Properties</Button>
-                  <Button style={{backgroundColor:'#F4934D', marginTop:"10px"}} fullWidth>Grocery Stores</Button>
-                  <Button style={{backgroundColor:'#F4934D', marginTop:"10px"}} fullWidth>Food Consumption</Button>
-                  <Button style={{backgroundColor:'#F4934D', marginTop:"10px"}} fullWidth>Obesity Percentage</Button>
-                  <Button style={{backgroundColor:'#F4934D', marginTop:"10px"}} fullWidth>Health Diagnosis Percentage</Button>
-              </ToolKit>
-              <ToolKit>
-                    <Donut affordableData={this.state.affordableData} />
-              </ToolKit>
-            </ChartDiv>
-          </Container>
+        })
+        this.setState({
+            series
+        })
+    }
+
+    render() {
+        console.log(this.state.indicators)
+        return (
+            <S.Container1>
+                <S.DescribSec>
+                    <h1>Affordability</h1>
+                    <S.DescribPar>All Angelenos, regardless of their income level, should have the ability to access Good Food. Affordability is an essential component of access. Supplemental nutrition programs such as SNAP, formerly known as food stamps, and Women, Infants and Children (WIC) increase the accessibility of food by expanding the food budgets of program participants, most of whom are low-income children, families and seniors. Prioritizing affordability means ensuring that our most vulnerable populations can access Good Food through the acceptance of supplemental nutrition vouchers and other strategies.</S.DescribPar>
+
+                </S.DescribSec>
+                <S.Container2>
+                    <AffordabilityIndicators indicators={this.state.indicators} selectIndicators={this.selectIndicators} selectFilter={this.selectFilter} selectAge={this.selectAge} selectEthnicity={this.selectEthnicity} selectLevel={this.selectLevel} refreshGraph={this.refreshGraph}/>
+                    <div id="chart">
+                        <AffordabilityChart series={this.state.series}/>
+                    </div>
+                </S.Container2>
+            </S.Container1>
         )
     }
 }
 
-export default withRouter(Affordable)
+export default withRouter(Affordability)

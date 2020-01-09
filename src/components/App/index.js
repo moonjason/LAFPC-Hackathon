@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import Homepage from '../Homepage';
 import AddAdmin from '../addAdmin';
-import Affordable from '../Affordable';
+import Affordability from '../Affordable';
 import Healthy from '../Healthy';
 import Fair from '../Fair';
 import Sustainable from '../Sustainable';
@@ -12,8 +12,6 @@ import SignIn from '../SignIn'
 import AdminButton from '../AdminButton';
 import Container from '@material-ui/core/Container';
 import Footer from '../Footer'
-import TestComponent from '../TestComponent69';
-
 
 import S from "./style"
 
@@ -135,12 +133,12 @@ class App extends Component {
               }
               <Route exact path='/addadmin' render={(props) =>  <AddAdmin register={this.register}  {...props} />} />
               <Route exact path='/' render={(props) =>  <Homepage {...props} />}  />
-              <Route exact path='/affordability' render={() => <Affordable  isLogged={this.state.isLogged}/>}/>
+              <Route exact path='/affordability' render={() => <Affordability  isLogged={this.state.isLogged}/>}/>
               <Route exact path='/health' render={() => <Healthy isLogged={this.state.isLogged}/>}/>
               <Route exact path='/fairness' render={() => <Fair isLogged={this.state.isLogged}/>}/>
               <Route exact path='/sustainability' render={() => <Sustainable isLogged={this.state.isLogged}/>}/>
 
-              <Route exact path='/test' render={() => <TestComponent isLogged={this.state.isLogged} />} />
+              {/* <Route exact path='/test' render={() => <TestComponent isLogged={this.state.isLogged} />} /> */}
               <Route exact path='/admin' render={() => <SignIn login={this.login} msg={this.state.msg}/>} />
               <Route component={ My404 } />
             </Switch>
