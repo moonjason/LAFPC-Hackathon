@@ -35,8 +35,10 @@ import { ThemeProvider } from '@material-ui/styles';
 import './TestComponent.css'
 
 // Styled Components
-import S from './style'
+import S from './style';
 
+// Layouts Components
+import Newnavbar from '../Newnavbar';
 
 const theme = createMuiTheme({
     typography: {
@@ -208,6 +210,9 @@ class TestComponent extends Component {
         const { healthyData, editData, showEditModal, showDataModal, dataModalProperty } = this.state;
         const { isLogged } = this.props.isLogged
         return (
+            <React.Fragment>
+            <Newnavbar />
+
             <S.Container1>
                 <S.DescribSec>
                     <h1>Healthy</h1>
@@ -457,6 +462,8 @@ class TestComponent extends Component {
                     </S.DropDown>
                 </S.Container2>
             </S.Container1>
+
+            </React.Fragment>
         )
     }
 }
