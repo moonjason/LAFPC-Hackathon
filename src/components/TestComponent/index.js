@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import HealthyData from './HealthyData';
-import EditHealthy from './EditHealthy';
+import data from "./rawDataAffordable"
 import HealthyChart from "./HealthyChart"
+import HealthyIndicators from "./HealthyIndicators"
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -55,222 +55,164 @@ const theme = createMuiTheme({
 class TestComponent extends Component {
 
     state = {
-        healthyData: [],
-        showEditModal: false,
-        showDataModal: false,
-        dataModalProperty: '',
-        editData: {
-            _id: null,
-            value: 'healthy',
-            indicator: '',
-            baseline: '',
-            update: '',
-            sources: '',
-            change: '',
-            notes: '',
-            dataStatus: '',
-            group: '',
-            error: ''
-        },
+        affordableData: [],
+        indicators: ["food-insecurity-overall"],
+        ageGroup: "eighteen",
+        series: [],
     }
 
     componentDidMount = () => {
-        this.getData()
+        console.log(data," thi")
+        this.refreshGraph()
     }
-
-    getData = async () => {
-        try {
-            const data = await fetch(`http://localhost:3030/data/get-data`, {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            const oldData = await data.json()
-            const healthData = oldData.data.filter(data => data.value === 'healthy')
+    selectIndicators = (e) => {
+        if(this.state.indicators.length === 3 && e.target.checked) {
+            e.target.checked = false
+            return
+        }
+        // if(this.state.indicators.length === 1 && e.target.checked === false) {
+        //     e.target.checked = true
+        //     return
+        // }
+        if(e.target.checked) {
             this.setState({
-                healthyData: healthData
+                indicators: [...this.state.indicators, e.target.id]
+            }, () => {
+                this.refreshGraph()
             })
-
-        } catch (err) {
-            console.log(err)
+        } else if(e.target.checked === false){
+            const newArr = [...this.state.indicators]
+            newArr.splice(newArr.indexOf(e.target.id), 1)
+            this.setState({
+                indicators: [...newArr]
+            }, () => {
+                this.refreshGraph()
+            })
         }
     }
-
-    addData = async (data) => {
-        try {
-            const addDataResponse = await fetch(`http://localhost:3030/data/add-data`, {
-                method: 'POST',
-                credentials: 'include',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            const parsedResponse = await addDataResponse.json()
-            this.setState({
-                healthyData: [...this.state.healthyData, parsedResponse.data]
-            })
-        } catch (err) {
-            console.log(err, 'this is error from add data')
-        }
-    }
-
-    handleFormChange = (e) => {
+    selectAge = (age) => {
         this.setState({
-            editData: {
-                ...this.state.editData,
-                [e.target.name]: e.target.value
+            ageGroup: age
+        }, () => {
+            this.refreshGraph()
+        })
+    }
+    refreshGraph = () => {
+        const series = this.state.indicators.map(indicator => {
+            if(indicator === "food-insecurity-overall") {
+                const firstYear = Math.trunc(data["2011"]["overallFoodInsecurity"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const secondYear = Math.trunc(data["2015"]["foodInsecure"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["foodInsecure"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                return {
+                    name: "Food Insecurity (overall)",
+                    data: newData
+                }
+            } else if (indicator === "food-insecurity-low") {
+                const firstYear = 0
+                const secondYear = 0
+                const thirdYear = Math.trunc(data["2018"]["lowFoodSecurity"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                return {
+                    name: "Food Insecurity (low)",
+                    data: newData
+                }
+            } else if(indicator === "food-insecurity-vlow") {
+                const firstYear = 0
+                const secondYear = 0
+                const thirdYear = Math.trunc(data["2018"]["veryLowFoodSecurity"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                return {
+                    name: "Food Insecurity (very low)",
+                    data: newData
+                }
+            } else if (indicator === "overweight") {
+                const firstYear = 0
+                const secondYear = 0
+                const thirdYear = Math.trunc(data["2018"]["overweight"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                return {
+                    name: "Overweight",
+                    data: newData,
+                }
+            } else if (indicator === "obesity") {
+                const firstYear = 0
+                const secondYear = 0
+                const thirdYear = Math.trunc(data["2018"]["obese"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                return {
+                    name: "Obesity",
+                    data: newData
+                }
+            } else if(indicator === "diabetes") {
+                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithDiabetes"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithDiabetes"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithDiabetes"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                return {
+                    name: "Diabetes",
+                    data: newData
+                }
+            } else if(indicator === "high-cholesterol") {
+                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithHighCholesterol"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithHighCholesterol"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithHighCholesterol"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                return {
+                    name: "High Cholesterol",
+                    data: newData
+                }
+            } else if(indicator === "hypertension") {
+                const firstYear = Math.trunc(data["2011"]["everDiagnosedWithHypertension"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const secondYear = Math.trunc(data["2015"]["everDiagnosedWithHypertension"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithHypertension"]["ageGroup"][`${this.state.ageGroup}`]*100)
+                const newData = [firstYear, secondYear, thirdYear]
+                return {
+                    name: "Hypertension",
+                    data: newData
+                }
             }
         })
-    }
-
-    closeAndEdit = async (e) => {
-        e.preventDefault();
-        try {
-            const editRequest = await fetch(`http://localhost:3030/data/${this.state.editData._id}/update-data`, {
-                method: 'PUT',
-                credentials: 'include',
-                body: JSON.stringify(this.state.editData),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            if (editRequest.status !== 200) {
-                throw Error('editResquest not working')
-            }
-            const editResponse = await editRequest.json();
-            const editDataArray = this.state.healthyData.map((data) => {
-                if (data._id === editResponse.data._id) {
-                    data = editResponse.data
-                }
-                return data
-            });
-            this.setState({
-                healthyData: editDataArray,
-                showEditModal: false
-            })
-            this.props.history.push('/healthy')
-        } catch (err) {
-            console.log(err, ' error closeAndEdit');
-            return err
-        }
-    }
-
-    editData = (data) => {
         this.setState({
-            showEditModal: !this.showEditModal,
-            editData: data
-        })
-    }
-
-    cancelEdit = () => {
-        this.setState({
-            showEditModal: false
-        })
-    }
-
-    delete = async (id) => {
-        try {
-            const deleteData = await fetch(`http://localhost:3030/data/${id}`, {
-                method: 'DELETE',
-                credentials: 'include',
-            });
-            if (deleteData.status !== 200) {
-                throw Error('Something happend on delete')
-            }
-            const deleteDataJson = await deleteData.json();
-            this.setState({
-                healthyData: this.state.healthyData.filter((data) => data._id !== id)
-            })
-        } catch (err) {
-            console.log(err);
-            return err
-        }
-    }
-
-    closeDataModal = () => {
-        this.setState({
-            showDataModal: false
-        })
-    }
-
-    showData = e => {
-        this.setState({
-            showDataModal: !this.state.showDataModal,
-            dataModalProperty: e.target.textContent
+            series
         })
     }
 
     render() {
-        const { healthyData, editData, showEditModal, showDataModal, dataModalProperty } = this.state;
-        const { isLogged } = this.props.isLogged
+        console.log(this.state.indicators)
         return (
             <S.Container1>
                 <S.DescribSec>
-                    <h1>Healthy</h1>
-                    <S.DescribPar>Food is integral to the health and quality of life of individuals and communities. Healthy food is nutritious, delicious and safe. Healthy food meets recommended dietary guidelines and supports the body’s ability to fight disease and heal. All people deserve access to healthy food that is affordable, conveniently availability and culturally relevant.</S.DescribPar>
+                    <h1>Affordable</h1>
+                    <S.DescribPar>All Angelenos, regardless of their income level, should have the ability to access Good Food. Affordability is an essential component of access. Supplemental nutrition programs such as SNAP, formerly known as food stamps, and Women, Infants and Children (WIC) increase the accessibility of food by expanding the food budgets of program participants, most of whom are low-income children, families and seniors. Prioritizing affordability means ensuring that our most vulnerable populations can access Good Food through the acceptance of supplemental nutrition vouchers and other strategies.</S.DescribPar>
 
-                    <S.DescribPar>Not all communities live in neighborhoods where “the healthy choice is the easy choice,” and instead are surrounded by unhealthy food retail such as liquor stores, convenience stores and fast food restaurants. Through the numerous policy, systems and environmental changes led by stakeholders throughout the LAFPC network, we are collectively innovating solutions for overcoming systemic barriers to healthy food access— tailoring these innovations to the unique dynamics of the communities that we serve.</S.DescribPar>
-
-                    <S.DescribPar>In this section, we explore progress towards improving the health of ALL Angelenos by evaluating disparities and change over time in the following categories: Increased healthy food access, Improved eating habits amongst adults & children, Rates of obesity, Rates of diet-related diseases.</S.DescribPar>
                 </S.DescribSec>
-                {
-                    showEditModal
-                        ?
-                        <EditHealthy cancelEdit={this.cancelEdit} closeAndEdit={this.closeAndEdit} editData={editData} handleFormChange={this.handleFormChange} />
-                        :
-                        null
-                }
-                {
-                    this.props.isLogged
-                        ?
-                        <HealthyData addData={this.addData} />
-                        :
-                        null
-                }
                 <S.Container2>
-                    <S.DropDown>
-                        <ThemeProvider theme={theme}>
+                    <HealthyIndicators selectIndicators={this.selectIndicators} selectAge={this.selectAge} refreshGraph={this.refreshGraph}/>
+                        {/* <ThemeProvider theme={theme}>
                         <ExpansionPanel>
                             <ExpansionPanelSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                                 >
-                                <Typography >Store</Typography>
+                                <Typography >Indicator</Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <RadioGroup aria-label="gender" name="gender2">
-                                {/* <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Radio color="primary" />}
-                                    label="None"
-                                />
-                                <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Radio color="primary" />}
-                                    label="None"
-                                /> */}
-                                
                                 <FormControlLabel
                                     aria-label="Acknowledge"
                                     onClick={event => event.stopPropagation()}
                                     onFocus={event => event.stopPropagation()}
                                     control={<Checkbox />}
-                                    label="Convenience"
+                                    label="Food Insecurity (overall)"
                                 />
                                 <FormControlLabel
                                     aria-label="Acknowledge"
                                     onClick={event => event.stopPropagation()}
                                     onFocus={event => event.stopPropagation()}
                                     control={<Checkbox />}
-                                    label="Grocery"
+                                    label="Food Insecurity (low)"
                                 />
                                 <FormControlLabel
                                     aria-label="Acknowledge"
@@ -279,24 +221,7 @@ class TestComponent extends Component {
                                     control={<Checkbox />}
                                     label="Liquor"
                                 />
-                                {/* <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Checkbox />}
-                                    label="None"
-                                /> */}
-                                
-
                                 </RadioGroup>
-                                
-                                {/* <NativeSelect>
-                                    
-                                    <option value="">None</option>
-                                    <option value={10}>Ten</option>
-                                    <option value={20}>Twenty</option>
-                                    <option value={30}>Thirty</option>
-                                </NativeSelect> */}
                             </ExpansionPanelDetails>
                             
 
@@ -313,27 +238,12 @@ class TestComponent extends Component {
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <RadioGroup aria-label="gender" name="gender2">
-                                    {/* <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Radio color="primary" />}
-                                    label="None"
-                                />
-                                <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Radio color="primary" />}
-                                    label="None"
-                                /> */}
-
                                     <FormControlLabel
                                         aria-label="Acknowledge"
                                         onClick={event => event.stopPropagation()}
                                         onFocus={event => event.stopPropagation()}
                                         control={<Checkbox />}
-                                        label="Convenience"
+                                        label="food insecurity (overall)"
                                     />
                                     <FormControlLabel
                                         aria-label="Acknowledge"
@@ -349,28 +259,9 @@ class TestComponent extends Component {
                                         control={<Checkbox />}
                                         label="Liquor"
                                     />
-                                    {/* <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Checkbox />}
-                                    label="None"
-                                /> */}
-
 
                                 </RadioGroup>
-
-                                {/* <NativeSelect>
-                                    
-                                    <option value="">None</option>
-                                    <option value={10}>Ten</option>
-                                    <option value={20}>Twenty</option>
-                                    <option value={30}>Thirty</option>
-                                </NativeSelect> */}
                             </ExpansionPanelDetails>
-
-
-
                         </ExpansionPanel>        
 
                         <ExpansionPanel>
@@ -383,27 +274,12 @@ class TestComponent extends Component {
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <RadioGroup aria-label="gender" name="gender2">
-                                    {/* <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Radio color="primary" />}
-                                    label="None"
-                                />
-                                <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Radio color="primary" />}
-                                    label="None"
-                                /> */}
-
                                     <FormControlLabel
                                         aria-label="Acknowledge"
                                         onClick={event => event.stopPropagation()}
                                         onFocus={event => event.stopPropagation()}
                                         control={<Checkbox />}
-                                        label="Convenience"
+                                        label="food insecurity (overall)"
                                     />
                                     <FormControlLabel
                                         aria-label="Acknowledge"
@@ -419,36 +295,13 @@ class TestComponent extends Component {
                                         control={<Checkbox />}
                                         label="Liquor"
                                     />
-                                    {/* <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Checkbox />}
-                                    label="None"
-                                /> */}
-
 
                                 </RadioGroup>
-
-                                {/* <NativeSelect>
-                                    
-                                    <option value="">None</option>
-                                    <option value={10}>Ten</option>
-                                    <option value={20}>Twenty</option>
-                                    <option value={30}>Thirty</option>
-                                </NativeSelect> */}
                             </ExpansionPanelDetails>
                         </ExpansionPanel> 
-                        </ThemeProvider>  
-                    </S.DropDown>
+                        </ThemeProvider>   */}
                     <div id="chart">
-                        <HealthyChart 
-                            options={this.state.options} 
-                            series={this.state.series} 
-                            type="bar" 
-                            height={320}
-                            width={600}
-                        />
+                        <HealthyChart series={this.state.series}/>
                     </div>
                 </S.Container2>
             </S.Container1>

@@ -20,27 +20,35 @@ export const Card = styled(NavLink)`
     display: flex;
     flex-direction: column;
     background-color: black;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: ${props => props.color};
     text-decoration: none;
+    &:hover {
+        opacity: 0.91;
+    }
 `
 
 export const Icon = styled.img`
-    height: 50%;
+    height: 55%;
 `
+export const PillarDiv = styled.div`
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+`
+
 export const PillarTitle = styled.h2`
-    height: 10%;
     color: white;
     margin: 0;
     font-weight: 500;
 `
 
 export const PillarDescrip = styled.p`
-    height: 40%;
     color: white;
     padding: 5px;
+    margin: 0;
     font-weight: 300;
 `
 

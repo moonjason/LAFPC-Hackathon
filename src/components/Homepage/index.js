@@ -13,6 +13,7 @@ import {HomeDiv,
         UserImgDiv,
         Break,
         Text,
+        PillarDiv,
         PillarTitle,
         PillarDescrip,
         CaseStudiesDiv,
@@ -56,23 +57,31 @@ class Home extends Component {
                     <TileDiv>
                         <Card to="/sustainability" color="#78B350">
                             <Icon src={Sustainability}></Icon>
-                            <PillarTitle>Sustainability</PillarTitle>
-                            <PillarDescrip>See how we ensure and expand the impact for sustainable food practices.</PillarDescrip>
+                            <PillarDiv>
+                                <PillarTitle>Sustainability</PillarTitle>
+                                <PillarDescrip>See how we ensure and expand the impact for sustainable food practices.</PillarDescrip>
+                            </PillarDiv>
                         </Card>
                         <Card to="/health" color="#266574">
                             <Icon src={Health}></Icon>
-                            <PillarTitle>Health</PillarTitle>
-                            <PillarDescrip>See how our efforts are improving people’s health in the community.</PillarDescrip>
+                            <PillarDiv>
+                                <PillarTitle>Health</PillarTitle>
+                                <PillarDescrip>See how our efforts are improving people’s health in the community.</PillarDescrip>
+                            </PillarDiv>
                         </Card>
                         <Card to="/affordability" color="#B94851">
                             <Icon src={Affordablility}></Icon>
-                            <PillarTitle>Affordability</PillarTitle>
-                            <PillarDescrip>See our success in providing affordable, fresh food to locals.</PillarDescrip>
+                            <PillarDiv>
+                                <PillarTitle>Affordability</PillarTitle>
+                                <PillarDescrip>See our success in providing affordable, fresh food to locals.</PillarDescrip>
+                            </PillarDiv>
                         </Card>
                         <Card to="/fairness" color="#FF8263">
                             <Icon src={Fairness}></Icon>
-                            <PillarTitle>Fairness</PillarTitle>
-                            <PillarDescrip>See how we curate fair prices for the food we help to distribute.</PillarDescrip>
+                            <PillarDiv>
+                                <PillarTitle>Fairness</PillarTitle>
+                                <PillarDescrip>See how we curate fair prices for the food we help to distribute.</PillarDescrip>
+                            </PillarDiv>
                         </Card>
                     </TileDiv>
                     <Break></Break>
