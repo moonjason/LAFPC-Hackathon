@@ -18,10 +18,26 @@ class HealthyChart extends Component {
                     }
                 },
             },
+            title: {
+                text: "LA County Affordability Statistics",
+                align: 'center',
+                margin: 10,
+                offsetX: 0,
+                offsetY: 0,
+                floating: false,
+                style: {
+                  fontSize:  '16px',
+                  color:  '#263238'
+                },
+            },
             dataLabels: {
                 enabled: true,
                 formatter: function (val, opts) {
-                    return `${val}%`
+                    if(val === 0) {
+                        return val = "N/A"
+                    } else {
+                        return `${val}%`
+                    }
                 },
                 offsetY: -20,
                 style: {

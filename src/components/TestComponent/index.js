@@ -139,15 +139,26 @@ class TestComponent extends Component {
                 const secondYear = Math.trunc(data["2015"]["foodInsecure"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const thirdYear = Math.trunc(data["2018"]["foodInsecure"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
                 return {
                     name: "Food Insecurity (overall)",
                     data: newData
                 }
             } else if (indicator === "food-insecurity-low") {
-                const firstYear = 0
+                const firstYear = data["2011"]["lowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100
                 const secondYear = 0
+                console.log(data["2011"]["lowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const thirdYear = Math.trunc(data["2018"]["lowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
                 return {
                     name: "Food Insecurity (low)",
                     data: newData
@@ -157,6 +168,11 @@ class TestComponent extends Component {
                 const secondYear = 0
                 const thirdYear = Math.trunc(data["2018"]["veryLowFoodSecurity"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
                 return {
                     name: "Food Insecurity (very low)",
                     data: newData
@@ -166,6 +182,11 @@ class TestComponent extends Component {
                 const secondYear = 0
                 const thirdYear = Math.trunc(data["2018"]["overweight"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
                 return {
                     name: "Overweight",
                     data: newData,
@@ -175,6 +196,11 @@ class TestComponent extends Component {
                 const secondYear = 0
                 const thirdYear = Math.trunc(data["2018"]["obese"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
                 return {
                     name: "Obesity",
                     data: newData
@@ -184,6 +210,11 @@ class TestComponent extends Component {
                 const secondYear = Math.trunc(data["2015"]["everDiagnosedWithDiabetes"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithDiabetes"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
                 return {
                     name: "Diabetes",
                     data: newData
@@ -193,6 +224,11 @@ class TestComponent extends Component {
                 const secondYear = Math.trunc(data["2015"]["everDiagnosedWithHighCholesterol"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithHighCholesterol"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
                 return {
                     name: "High Cholesterol",
                     data: newData
@@ -202,6 +238,11 @@ class TestComponent extends Component {
                 const secondYear = Math.trunc(data["2015"]["everDiagnosedWithHypertension"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const thirdYear = Math.trunc(data["2018"]["everDiagnosedWithHypertension"][`${this.state.filter}`][`${this.state.nextFilter}`]*100)
                 const newData = [firstYear, secondYear, thirdYear]
+                newData.forEach((data, i, arr) => {
+                    if(!data) {
+                        arr[i] = 0
+                    }
+                })
                 return {
                     name: "Hypertension",
                     data: newData
@@ -223,118 +264,7 @@ class TestComponent extends Component {
 
                 </S.DescribSec>
                 <S.Container2>
-                    <HealthyIndicators selectIndicators={this.selectIndicators} selectFilter={this.selectFilter} selectAge={this.selectAge} selectEthnicity={this.selectEthnicity} selectLevel={this.selectLevel} refreshGraph={this.refreshGraph}/>
-                        {/* <ThemeProvider theme={theme}>
-                        <ExpansionPanel>
-                            <ExpansionPanelSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                                >
-                                <Typography >Indicator</Typography>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <RadioGroup aria-label="gender" name="gender2">
-                                <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Checkbox />}
-                                    label="Food Insecurity (overall)"
-                                />
-                                <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Checkbox />}
-                                    label="Food Insecurity (low)"
-                                />
-                                <FormControlLabel
-                                    aria-label="Acknowledge"
-                                    onClick={event => event.stopPropagation()}
-                                    onFocus={event => event.stopPropagation()}
-                                    control={<Checkbox />}
-                                    label="Liquor"
-                                />
-                                </RadioGroup>
-                            </ExpansionPanelDetails>
-                            
-
-                            
-                        </ExpansionPanel>
-
-                        <ExpansionPanel>
-                            <ExpansionPanelSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography >Source</Typography>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <RadioGroup aria-label="gender" name="gender2">
-                                    <FormControlLabel
-                                        aria-label="Acknowledge"
-                                        onClick={event => event.stopPropagation()}
-                                        onFocus={event => event.stopPropagation()}
-                                        control={<Checkbox />}
-                                        label="food insecurity (overall)"
-                                    />
-                                    <FormControlLabel
-                                        aria-label="Acknowledge"
-                                        onClick={event => event.stopPropagation()}
-                                        onFocus={event => event.stopPropagation()}
-                                        control={<Checkbox />}
-                                        label="Grocery"
-                                    />
-                                    <FormControlLabel
-                                        aria-label="Acknowledge"
-                                        onClick={event => event.stopPropagation()}
-                                        onFocus={event => event.stopPropagation()}
-                                        control={<Checkbox />}
-                                        label="Liquor"
-                                    />
-
-                                </RadioGroup>
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>        
-
-                        <ExpansionPanel>
-                            <ExpansionPanelSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography >Payment</Typography>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                                <RadioGroup aria-label="gender" name="gender2">
-                                    <FormControlLabel
-                                        aria-label="Acknowledge"
-                                        onClick={event => event.stopPropagation()}
-                                        onFocus={event => event.stopPropagation()}
-                                        control={<Checkbox />}
-                                        label="food insecurity (overall)"
-                                    />
-                                    <FormControlLabel
-                                        aria-label="Acknowledge"
-                                        onClick={event => event.stopPropagation()}
-                                        onFocus={event => event.stopPropagation()}
-                                        control={<Checkbox />}
-                                        label="Grocery"
-                                    />
-                                    <FormControlLabel
-                                        aria-label="Acknowledge"
-                                        onClick={event => event.stopPropagation()}
-                                        onFocus={event => event.stopPropagation()}
-                                        control={<Checkbox />}
-                                        label="Liquor"
-                                    />
-
-                                </RadioGroup>
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel> 
-                        </ThemeProvider>   */}
+                    <HealthyIndicators indicators={this.state.indicators} selectIndicators={this.selectIndicators} selectFilter={this.selectFilter} selectAge={this.selectAge} selectEthnicity={this.selectEthnicity} selectLevel={this.selectLevel} refreshGraph={this.refreshGraph}/>
                     <div id="chart">
                         <HealthyChart series={this.state.series}/>
                     </div>

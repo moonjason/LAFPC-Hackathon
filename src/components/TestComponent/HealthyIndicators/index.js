@@ -37,7 +37,7 @@ class HealthyIndicators extends Component {
             <S.FilterContainer>
                     <S.IndicatorDiv>
                         <S.IndicatorContainer>
-                            <S.IndicatorTitle>Indicators</S.IndicatorTitle>
+                            <S.IndicatorTitle>Indicators ({this.props.indicators.length}/3)</S.IndicatorTitle>
                         </S.IndicatorContainer>
                         <S.Label htmlFor="food-insecurity-overall" onClick={this.handleIndicator}>
                             <input type="checkbox" id="food-insecurity-overall"></input>
