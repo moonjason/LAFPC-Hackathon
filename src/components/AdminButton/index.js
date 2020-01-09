@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import logo from "./img/whitelogo.png"
 import Banner from "./img/veggies-banner.png"
 import HomeIcon from '@material-ui/icons/Home';
-
+import { HeaderTitle } from './style';
 
 class AdminButton extends Component {
   render() {
@@ -20,11 +20,16 @@ class AdminButton extends Component {
                 </div>
               </Grid>
               <Grid item xs>
-                <div>
-                  <div style={{textAlign:'center', alignItems: 'center'}}>
-                    <Button size='large' component={ LinkRoute } to='/' style={{color:'white', fontWeight: 'bold'}}>
+                <div style={{width: "100%"}}>
+                  <div style={{textAlign:'center', alignItems: 'center', width: "100%"}}>
+                    {/* <Button size='large' component={ LinkRoute } to='/' style={{color:'white', fontWeight: 'bold'}}>
                       LAFPC Food System Dashboard
-                    </Button>
+                    </Button> */}
+                    <HeaderTitle style={{width: '100%'}}>
+                      <LinkRoute to="/" style={{textDecoration: 'none', color: 'white'}}>
+                        LAFPC Food System Dashboard                      
+                      </LinkRoute>
+                    </HeaderTitle>
                   </div>
                 </div>
               </Grid>
