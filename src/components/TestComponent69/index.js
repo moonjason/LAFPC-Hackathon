@@ -1,32 +1,33 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import data from "./rawDataAffordable"
-import HealthyChart from "./HealthyChart"
-import HealthyIndicators from "./HealthyIndicators"
-import Button from '@material-ui/core/Button';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
+import AffordabilityChart from "./AffordabilityChart"
+import AffordabilityIndicators from "./AffordabilityIndicators"
+// import Button from '@material-ui/core/Button';
+// import EditIcon from '@material-ui/icons/Edit';
+// import DeleteIcon from 'n@material-ui/icons/Delete';
 
-import { makeStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Checkbox from '@material-ui/core/Checkbox';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
+// import { makeStyles } from '@material-ui/core/styles';
+// import FormControl from '@material-ui/core/FormControl';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Select from '@material-ui/core/Select';
+// import NativeSelect from '@material-ui/core/NativeSelect';
+// import Menu from '@material-ui/core/Menu';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import DraftsIcon from '@material-ui/icons/Drafts';
+// import SendIcon from '@material-ui/icons/Send';
+// import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+// import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+// import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+// import Typography from '@material-ui/core/Typography';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import Checkbox from '@material-ui/core/Checkbox';
+// import Radio from '@material-ui/core/Radio';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+import DataCard from '../DataCard';
 
 // Material UI Themes
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -263,10 +264,13 @@ class TestComponent extends Component {
                     <S.DescribPar>All Angelenos, regardless of their income level, should have the ability to access Good Food. Affordability is an essential component of access. Supplemental nutrition programs such as SNAP, formerly known as food stamps, and Women, Infants and Children (WIC) increase the accessibility of food by expanding the food budgets of program participants, most of whom are low-income children, families and seniors. Prioritizing affordability means ensuring that our most vulnerable populations can access Good Food through the acceptance of supplemental nutrition vouchers and other strategies.</S.DescribPar>
 
                 </S.DescribSec>
+      
+                <DataCard></DataCard>
+
                 <S.Container2>
-                    <HealthyIndicators indicators={this.state.indicators} selectIndicators={this.selectIndicators} selectFilter={this.selectFilter} selectAge={this.selectAge} selectEthnicity={this.selectEthnicity} selectLevel={this.selectLevel} refreshGraph={this.refreshGraph}/>
+                    <AffordabilityIndicators indicators={this.state.indicators} selectIndicators={this.selectIndicators} selectFilter={this.selectFilter} selectAge={this.selectAge} selectEthnicity={this.selectEthnicity} selectLevel={this.selectLevel} refreshGraph={this.refreshGraph}/>
                     <div id="chart">
-                        <HealthyChart series={this.state.series}/>
+                        <AffordabilityChart series={this.state.series}/>
                     </div>
                 </S.Container2>
             </S.Container1>

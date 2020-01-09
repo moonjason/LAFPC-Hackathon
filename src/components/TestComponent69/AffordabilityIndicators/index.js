@@ -3,7 +3,7 @@ import S from "./style"
 import { Radio } from "@material-ui/core"
 import DownArrow from "./down-arrow.png"
 
-class HealthyIndicators extends Component {
+class AffordabilityIndicators extends Component {
     componentDidMount() {
         document.getElementById("food-insecurity-overall").checked = true
     }
@@ -155,4 +155,4 @@ class HealthyIndicators extends Component {
     }
 }
 
-export default HealthyIndicators
+export default AffordabilityIndicators

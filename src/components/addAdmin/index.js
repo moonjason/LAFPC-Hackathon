@@ -26,7 +26,7 @@ class AddAdmin extends Component {
     if (this.state.username.length < 1) {
       this.setState({
         error: {
-          name: 'please fill out name!!!'
+          name: 'Need a username.'
         }
       })
       return false
@@ -40,7 +40,7 @@ class AddAdmin extends Component {
       ) {
       this.setState({
         error: {
-          password: 'passwords must match, needs a number, length of 5 with a upper/lower case letter!!!' 
+          password: 'Passwords must match, include a number, and be a length of 5 with a upper/lower case letter.' 
         }
       })
         return false
@@ -48,7 +48,7 @@ class AddAdmin extends Component {
       if (this.state.keycode !== 'foodpolicy') {
         this.setState({
           error: {
-            keycode: 'enter in correct keycode'
+            keycode: 'Incorrect Keycode'
           }
         })
         return false
@@ -89,7 +89,7 @@ class AddAdmin extends Component {
                     variant="outlined"
                   />
                   <div>
-                    <small>{this.state.error.name}</small>
+                    <p>{this.state.error.name}</p>
                   </div>
                 </div>
                 <div>
@@ -113,9 +113,9 @@ class AddAdmin extends Component {
                     margin="normal"
                     variant="outlined"
                   />
+                </div>
                   <div>
-                    <small>{this.state.error.password}</small>
-                  </div>
+                    <p>{this.state.error.password}</p>
                   </div>
                   <div>
                   <TextField
@@ -128,7 +128,7 @@ class AddAdmin extends Component {
                     variant="outlined"
                   />
                   <div>
-                    <small>{this.state.error.keycode}</small>
+                    <p>{this.state.error.keycode}</p>
                   </div>
                 </div>
                 <Button 

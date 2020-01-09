@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import ReactApexChart from "react-apexcharts"
 import { dark } from "@material-ui/core/styles/createPalette"
 
-class HealthyChart extends Component {
+class AffordabilityChart extends Component {
     state = {
         options: {
             chart: {
@@ -96,4 +96,4 @@ class HealthyChart extends Component {
     }
 }
 
-export default HealthyChart
+export default AffordabilityChart
