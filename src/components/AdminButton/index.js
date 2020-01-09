@@ -15,7 +15,7 @@ class AdminButton extends Component {
           <div style={{marginLeft: '30px', marginRight: '30px'}}>
             <Grid container spacing={3} style={{alignItems:'center'}}>
               <Grid item xs>
-                <div style={{display:'flex'}}>
+                <div style={{display:'flex', paddingBottom: '100px'}}>
                   <a href='https://www.goodfoodla.org/'><img src={logo} width={100} height={100} alt={"logo"} /></a> 
                 </div>
               </Grid>
@@ -25,7 +25,7 @@ class AdminButton extends Component {
                     {/* <Button size='large' component={ LinkRoute } to='/' style={{color:'white', fontWeight: 'bold'}}>
                       LAFPC Food System Dashboard
                     </Button> */}
-                    <HeaderTitle style={{width: '100%'}}>
+                    <HeaderTitle style={{width: '100%', paddingTop: '100px'}}>
                       <LinkRoute to="/" style={{textDecoration: 'none', color: 'white'}}>
                         LAFPC Food System Dashboard                      
                       </LinkRoute>
@@ -40,12 +40,12 @@ class AdminButton extends Component {
                   color="inherit"
                   style={{margin:'0', color:'white', fontWeight:'bold'}}
                 >
-                  <HomeIcon />
+                  {/* <HomeIcon /> */}
                 </Button>
                 <Button
                   variant="contained" 
                   color="primary"
-                  style={{fontWeight: 'bold', color: '#FFFB00'}}
+                  style={{fontWeight: 'bold', color: '#FFFB00', bottom: '50px'}}
                 >
                   Donate
                 </Button>

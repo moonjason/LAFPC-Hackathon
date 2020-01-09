@@ -16,9 +16,9 @@ const NavStyle = styled.nav`
 
   main {
     max-width: 100%;
-    margin: 0 auto;
+    margin: 50px auto;
     display: flex;
-    padding: 5px 0px;
+    padding: 5px 0px 5px 0px;
 
     @media (min-width: 1200px) {
       max-width: 100.0%;
