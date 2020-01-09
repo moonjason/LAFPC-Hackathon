@@ -217,6 +217,7 @@ class TestComponent extends Component {
 
                     <S.DescribPar>In this section, we explore progress towards improving the health of ALL Angelenos by evaluating disparities and change over time in the following categories: Increased healthy food access, Improved eating habits amongst adults & children, Rates of obesity, Rates of diet-related diseases.</S.DescribPar>
                 </S.DescribSec>
+
                 <DataCard></DataCard>
                 {
                     showEditModal
