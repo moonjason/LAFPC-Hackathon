@@ -10,7 +10,7 @@ const NavLink = styled(Link)`
   padding: 0.5rem 0.33rem 0.5rem 0.33rem;
   text-transform: uppercase;  
   color: black;
-
+  opacity: 1;
   
   
   &:hover {

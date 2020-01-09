@@ -27,7 +27,7 @@ const NavStyle = styled.nav`
   }
   
   div {
-    margin-top: 5.0rem;
+    /* margin-top: 5.0rem; */
     width: 33.333%;
     text-align: left;
   }
@@ -35,7 +35,7 @@ const NavStyle = styled.nav`
   article {
     width: 33.333%;
     text-align: center;
-    margin-top: 5.0rem;
+    /* margin-top: 5.0rem; */
      &:hover {
       color: grey;
     }
@@ -57,7 +57,7 @@ const NavStyle = styled.nav`
   }
 
   section {
-    margin-top: 5.0rem;
+    /* margin-top: 5.0rem; */
     width: 60%;
     text-align: right; 
   }
