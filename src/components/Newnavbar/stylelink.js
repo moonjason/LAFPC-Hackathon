@@ -7,11 +7,12 @@ const NavLink = styled(Link)`
   font-size: 12px;
   font-family: 'Roboto' , sans-serif;
   margin-left: 2%;
-  padding: 0.5rem 0.33rem 0.5rem 0.33rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   text-transform: uppercase;  
   color: black;
   opacity: 1;
   border: 1px inset rgb(179, 40, 17);
+  border-radius: 40%;
   
   
   &:hover {

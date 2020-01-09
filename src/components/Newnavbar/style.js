@@ -27,8 +27,8 @@ const NavStyle = styled.nav`
   
   div {
     /* margin-top: 5.0rem; */
-    width: 25%;
-    text-align: left;
+    width: 20%;
+    text-align: right;
   }
   
   article {
@@ -43,22 +43,22 @@ const NavStyle = styled.nav`
     @media (max-width: 500px) {
       font-size: 14px;
       
-      margin-top: 4%;
+      /* margin-top: 4%;
       margin-right: 4%;
-      margin-left: 12.5%;
+      margin-left: 12.5%; */
     }
 
     @media (max-width: 720px) {
-      font-size: 16px;
+      /* font-size: 16px;
       margin-top: 4%;
-      margin-right: 5%;
+      margin-right: 5%; */
     }
   }
 
   section {
     /* margin-top: 5.0rem; */
-    width: 25%;
-    text-align: right; 
+    width: 30%;
+    text-align: left; 
   }
 `
 
