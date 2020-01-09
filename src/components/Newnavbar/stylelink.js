@@ -11,6 +11,7 @@ const NavLink = styled(Link)`
   text-transform: uppercase;  
   color: black;
   opacity: 1;
+  border: 1px inset rgb(179, 40, 17);
   
   
   &:hover {

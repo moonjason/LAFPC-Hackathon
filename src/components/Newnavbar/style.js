@@ -9,14 +9,13 @@ import styled from 'styled-components';
 const NavStyle = styled.nav`
 
   position: relative;
-  border-bottom: 1px solid black;
   width: 100%;
   top: 0;
   background-color: white;
   opacity: 0.7;
 
   main {
-    max-width: 75%;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     padding: 5px;
@@ -28,12 +27,12 @@ const NavStyle = styled.nav`
   
   div {
     /* margin-top: 5.0rem; */
-    width: 33.333%;
+    width: 25%;
     text-align: left;
   }
   
   article {
-    width: 33.333%;
+    width: 50%;
     text-align: center;
     /* margin-top: 5.0rem; */
      &:hover {
@@ -58,7 +57,7 @@ const NavStyle = styled.nav`
 
   section {
     /* margin-top: 5.0rem; */
-    width: 60%;
+    width: 25%;
     text-align: right; 
   }
 `
