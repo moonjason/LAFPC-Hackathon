@@ -7,11 +7,11 @@ const NavLink = styled(Link)`
   font-size: 12px;
   font-family: 'Roboto' , sans-serif;
   margin-left: 2%;
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  padding: 0.3rem 0.3rem 0.3rem 0.3rem;
   text-transform: uppercase;  
-  color: black;
+  color: white;
   opacity: 1;
-  border: 1px inset rgb(179, 40, 17);
+  border: 2px inset white;
   border-radius: 40%;
   
   
@@ -21,7 +21,12 @@ const NavLink = styled(Link)`
   }
 
   @media (max-width: 500px) {
-    font-size: 10px;
+    font-size: 8px;
+    padding: 0.1rem 0.1rem;
+  }
+
+  @media (max-width: 720px) {
+    padding: 0.1rem 0.1rem;
   }
 
 `

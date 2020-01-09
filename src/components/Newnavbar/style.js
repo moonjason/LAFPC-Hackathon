@@ -8,11 +8,11 @@ import styled from 'styled-components';
 
 const NavStyle = styled.nav`
 
-  position: relative;
+  position: fixed;
   width: 100%;
   top: 0;
-  background-color: white;
-  opacity: 0.7;
+  background-color: black;
+  opacity: 0.65;
 
   main {
     max-width: 100%;
@@ -29,6 +29,19 @@ const NavStyle = styled.nav`
     /* margin-top: 5.0rem; */
     width: 20%;
     text-align: right;
+
+    @media (max-width: 500px) {
+      margin-left: 1rem;  
+      width: 10%;
+
+    }
+
+     @media (max-width: 720px) {
+      margin-left: 1rem;  
+      width: 10%;
+
+    }
+
   }
   
   article {
@@ -39,26 +52,35 @@ const NavStyle = styled.nav`
       color: grey;
     }
     
-
     @media (max-width: 500px) {
-      font-size: 14px;
-      
-      /* margin-top: 4%;
-      margin-right: 4%;
-      margin-left: 12.5%; */
+        margin-left: 1rem;
+        width: 60%;
+
     }
 
     @media (max-width: 720px) {
-      /* font-size: 16px;
-      margin-top: 4%;
-      margin-right: 5%; */
+        margin-left: 1rem;
+        width: 50%;
+
     }
+
   }
 
   section {
     /* margin-top: 5.0rem; */
     width: 30%;
     text-align: left; 
+
+    @media (max-width: 500px) {
+        width: 30%;
+
+    }
+
+    @media (max-width: 720px) {
+        width: 40%;
+
+    }
+
   }
 `
 
