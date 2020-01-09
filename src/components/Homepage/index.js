@@ -26,7 +26,7 @@ import Sustainability from "./img/Sustainability.png"
 import Fairness from "./img/Fairness2.png"
 import Health from "./img/Health.png"
 
-import Food from "./img/food-la.jpeg"
+import Food from "./img/securityimg.jpg"
 import Compost from "./img/compost-ground.jpg"
 import Plant from "./img/green-plant.jpg"
 
