@@ -12,7 +12,7 @@ import SignIn from '../SignIn'
 import AdminButton from '../AdminButton';
 import Container from '@material-ui/core/Container';
 import Footer from '../Footer'
-import TestComponent from '../TestComponent';
+import TestComponent from '../TestComponent69';
 
 
 import S from "./style"
