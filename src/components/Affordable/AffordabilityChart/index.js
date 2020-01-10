@@ -63,7 +63,7 @@ class AffordabilityChart extends Component {
             },
             yaxis: {
                 min: 0,
-                max: 100,
+                max: 60,
                 title: {
                     text: 'Percentage of LA County population'
                 }
