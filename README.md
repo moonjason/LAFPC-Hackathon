@@ -3,6 +3,9 @@
 The Los Angeles Food Policy Council (LAFPC) works to ensure food is healthy, affordable, fair and sustainable for all.
 This website is a dashboard for everyone in the Los Angeles community to see how the Los Angeles Food Policy Council's initatives improve the health and life of their communities.
 
+![homepage]('./public/homepage.png')
+![graphpage]('./public/graph.png')
+
 ## Technologies
 ### Front-End (User Interface)
 * HTML5
@@ -11,6 +14,7 @@ This website is a dashboard for everyone in the Los Angeles community to see how
 * JavaScript
 * React.js
 * Styled Components (React)
+* ApexCharts
 
 ### Back-End (Server-Side and Database)
 * MongoDB (NoSQL Database)
