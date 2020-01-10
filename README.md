@@ -11,6 +11,7 @@ This website is a dashboard for everyone in the Los Angeles community to see how
 * JavaScript
 * React.js
 * Styled Components (React)
+* ApexCharts
 
 ### Back-End (Server-Side and Database)
 * MongoDB (NoSQL Database)
