@@ -7,6 +7,7 @@ S.Container1 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 1250px;
 `
 
 S.Container2 = styled.div`
